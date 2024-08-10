@@ -1,17 +1,20 @@
+/* General styles */
 body, html {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
     font-family: 'Arial', sans-serif;
-    background-color: #000;
-    color: white;
+    background-color: white; /* Set background to white */
+    color: black; /* Default text color to black */
 }
 
+/* Header section */
 .container {
     position: relative;
     height: 100vh;
     overflow: hidden;
+    background-color: #000; /* The black background only applies to the header section */
 }
 
 header {
@@ -24,9 +27,10 @@ header {
     z-index: 2;
 }
 
-.logo {
+.text-logo {
     font-size: 24px;
     font-weight: bold;
+    color: white; /* Ensure text color is white */
 }
 
 nav ul {
@@ -47,6 +51,7 @@ nav ul li a {
     border-radius: 15px;
 }
 
+/* Background pattern behind the header */
 .background-pattern {
     position: absolute;
     top: 0;
@@ -59,33 +64,61 @@ nav ul li a {
     z-index: 1;
 }
 
-/* New section for the white background */
+/* Content section styles */
 #content-section {
-    background-color: white;
+    display: flex;
+    justify-content: space-between; /* Ensure equal spacing between columns */
+    align-items: center; /* Center all children vertically */
+    background-color: white; /* Ensure the content section is completely white */
     color: black;
-    padding: 50px 20px;
-    text-align: center;
+    padding: 50px;
+    z-index: 3;
+    max-width: 1200px;
+    margin: 0 auto; /* Center the content section */
+    border: none; /* Remove borders if any */
+    box-shadow: none; /* Remove the drop shadow */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
 }
 
-#content-section h1 {
-    font-size: 48px;
+/* Center text column on the left */
+#content-section .text-column {
+    flex: 1; /* Allow the text column to grow and take up equal space */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 20px;
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+/* Center image column on the right */
+#content-section .image-column {
+    flex: 1; /* Allow the image column to grow and take up equal space */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the images within the column */
+    justify-content: center;
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+/* Align and size images uniformly */
+.image-logo img {
+    width: 100%; /* Ensure logo image takes full width of its container */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 100%; /* Set max-width to 100% to fill the container */
     margin-bottom: 20px;
 }
 
-#content-section p {
-    font-size: 18px;
-    line-height: 1.5;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
 #content-section .app-download {
-    margin-top: 30px;
     display: flex;
-    justify-content: center;
-    gap: 20px;
+    flex-direction: column; /* Stack images vertically */
+    gap: 20px; /* Space between images */
+    align-items: center;
+    width: 100%; /* Ensure it spans full width of the container */
+    max-width: 100%; /* Allow container to scale to full width */
 }
 
 #content-section .app-download img {
-    width: 150px;
+    width: 100%; /* Ensure images take full width of their container */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 20px;
 }
