@@ -5,61 +5,46 @@ body, html {
     width: 100%;
     height: 100%;
     font-family: 'Arial', sans-serif;
-    background-color: white; /* Set background to white */
-    color: black; /* Default text color to black */
+    background-color: white; /* Ensure background is white */
+    color: black; /* Default text color */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
-/* Container for the entire page */
+/* Page background framing */
 .page-wrapper {
-    position: relative; /* Changed to relative to contain child elements */
-    width: 100vw; /* Full viewport width */
-    height: 100vh; /* Full viewport height */
-    border: 5px solid white; /* White border around the page */
-    border-radius: 15px; /* Rounded corners */
-    padding: 20px; /* Space between border and content */
-    box-sizing: border-box; /* Include padding and border in element's total width and height */
-    overflow: auto; /* Allow scrolling if needed */
+    position: relative;
+    min-height: 100vh; /* Full viewport height */
+    padding: 50px; /* Increased padding for thicker white frame */
+    background: white; /* White background for the page */
+    box-sizing: border-box; /* Include padding in element's total width and height */
+    overflow-y: auto; /* Allow vertical scrolling */
 }
 
-/* Pagination dots */
-.pagination-dots {
-    position: absolute;
-    right: 20px; /* Position dots on the right side */
-    top: 20px; /* Align dots vertically */
-    display: flex;
-    flex-direction: column;
-    gap: 10px; /* Space between dots */
-}
-
-.pagination-dot {
-    width: 10px;
-    height: 10px;
-    background-color: black; /* Color of the dots */
-    border-radius: 50%; /* Make dots circular */
-}
-
-/* Header section */
+/* Inner container for the content with background image */
 .container {
     position: relative;
-    height: 100vh; /* Ensure header covers the full viewport height */
-    overflow: hidden;
-    background-color: #000; /* The black background only applies to the header section */
+    padding: 50px; /* Updated padding for the thicker frame */
+    background-image: url('../images/background.jpg'); /* Background image */
+    background-size: cover; /* Cover the entire container */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* No repeating */
+    border-radius: 20px; /* Rounded corners */
+    min-height: calc(100vh - 100px); /* Ensure container is at least as tall as the viewport */
+    box-sizing: border-box; /* Include padding in width and height */
 }
 
+/* Header styles */
 header {
-    position: absolute;
-    top: 20px;
-    left: 20px;
     display: flex;
     justify-content: space-between;
-    width: calc(100% - 40px);
-    z-index: 2;
+    align-items: center;
+    padding: 20px 0;
 }
 
 .text-logo {
     font-size: 24px;
     font-weight: bold;
-    color: white; /* Ensure text color is white */
+    color: white; /* White text to contrast against the background image */
 }
 
 nav ul {
@@ -68,86 +53,59 @@ nav ul {
     gap: 20px;
 }
 
-nav ul li {
-    font-size: 16px;
-}
-
 nav ul li a {
-    color: white;
+    color: white; /* White text color */
     text-decoration: none;
-    border: 2px solid white;
     padding: 5px 10px;
     border-radius: 15px;
-}
-
-/* Background pattern behind the header */
-.background-pattern {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('../images/background.jpg');
-    background-size: cover;
-    background-position: center;
-    z-index: 1;
+    border: 2px solid white; /* White border around the nav items */
 }
 
 /* Content section styles */
 #content-section {
     display: flex;
-    justify-content: space-between; /* Ensure equal spacing between columns */
-    align-items: center; /* Center all children vertically */
-    background-color: white; /* Ensure the content section is completely white */
-    color: black;
+    justify-content: space-between; /* Space between text and images */
+    align-items: center; /* Center align vertically */
+    background-color: white; /* White background for the content section */
     padding: 50px;
-    z-index: 3;
+    box-shadow: none; /* No shadow */
+    border-radius: 20px; /* Rounded corners */
     max-width: 1200px;
-    margin: 0 auto; /* Center the content section */
-    border: none; /* Remove borders if any */
-    box-shadow: none; /* Remove the drop shadow */
-    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    margin: 40px auto; /* Center the content and add space above */
+    box-sizing: border-box; /* Include padding in element's total width and height */
 }
 
-/* Center text column on the left */
+/* Text and image columns */
 #content-section .text-column {
-    flex: 1; /* Allow the text column to grow and take up equal space */
+    flex: 1; /* Allow the text column to take up equal space */
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding-right: 20px;
-    box-sizing: border-box; /* Include padding in width calculation */
+    justify-content: center; /* Center text vertically */
+    padding-right: 20px; /* Space between text and image */
+    box-sizing: border-box; /* Include padding in width */
 }
 
-/* Center image column on the right */
 #content-section .image-column {
-    flex: 1; /* Allow the image column to grow and take up equal space */
+    flex: 1; /* Allow the image column to take up equal space */
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center the images within the column */
-    justify-content: center;
-    box-sizing: border-box; /* Include padding in width calculation */
+    align-items: center; /* Center images */
+    justify-content: center; /* Center images vertically */
+    box-sizing: border-box; /* Include padding in width */
 }
 
-/* Align and size images uniformly */
 .image-logo img {
-    width: 100%; /* Ensure logo image takes full width of its container */
+    width: 100%; /* Full width of container */
     height: auto; /* Maintain aspect ratio */
-    max-width: 100%; /* Set max-width to 100% to fill the container */
-    margin-bottom: 20px;
+    max-width: 100%; /* Max width constraint */
+    margin-bottom: 20px; /* Space below image */
 }
 
 #content-section .app-download {
     display: flex;
-    flex-direction: column; /* Stack images vertically */
+    flex-direction: column; /* Stack images */
     gap: 20px; /* Space between images */
     align-items: center;
-    width: 100%; /* Ensure it spans full width of the container */
-    max-width: 100%; /* Allow container to scale to full width */
-}
-
-#content-section .app-download img {
-    width: 100%; /* Ensure images take full width of their container */
-    height: auto; /* Maintain aspect ratio */
-    margin-bottom: 20px;
+    width: 100%;
+    max-width: 100%;
 }
