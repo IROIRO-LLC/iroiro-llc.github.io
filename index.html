@@ -28,35 +28,56 @@
         <div class="background-pattern"></div>
     </div>
 
-    <!-- Content section -->
     <div id="content-section">
         <div class="text-column">
             <h1>BEAUTIFUL EVERYDAY LIFE SOLUTIONS.</h1>
             <p>
-                Welcome to <strong>IROIRO</strong>, a dynamic lifestyle brand dedicated to offering a diverse range of
-                high-quality solutions for various aspects of life. Inspired by the Japanese adjective
-                <strong>"IROIRO"</strong> [色々 (hiragana いろいろ, rōmaji iroiro, phonetic iroiro)], which refers to
-                different kinds of objects, ideas, or situations, we strive to bring forth a wide array of innovative
-                products and services meant to enrich one's well-being.
+                Welcome to <strong>IROIRO</strong>, a dynamic lifestyle brand committed to delivering a diverse array of
+                high-quality solutions for every aspect of life. Inspired by the Japanese adjective
+                <strong>"IROIRO"</strong> [色々 (hiragana いろいろ, rōmaji iroiro)], which conveys the idea of variety
+                and diversity, we offer an extensive range of innovative products and services designed to enhance your
+                well-being.
             </p>
             <p>
-                At <strong>色々</strong>, we believe in the power of addressing life's problems with a comprehensive
-                approach. We understand that individuals face a multitude of challenges, and we are committed to providing
-                solutions that cater to their unique needs. Our mission is to develop and collaborate with brands that share
-                our vision, focusing on crafting products and experiences specifically designed to enhance the end user's
-                quality of life.
+                At <strong>色々</strong>, we embrace a holistic approach to solving life's challenges. We recognize that
+                everyone encounters unique obstacles, and our mission is to provide tailored solutions that meet those
+                individual needs. By partnering with like-minded brands, we focus on crafting products and experiences
+                that elevate the quality of life for our users.
             </p>
-        </div>
-        <div class="image-column">
-            <div class="image-logo">
-                <img src="assets/images/logo.png" alt="IROIRO Logo" loading="lazy">
-            </div>
             <div class="app-download">
                 <img src="assets/images/appstore.png" alt="Download on the App Store" loading="lazy">
                 <img src="assets/images/googleplay.png" alt="Get it on Google Play" loading="lazy">
             </div>
         </div>
+        <div class="image-column">
+            <div class="image-logo">
+                <img src="assets/images/logo.png" alt="IROIRO Logo">
+            </div>
+        </div>
     </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <p>Support our journey by shopping with us <strong>Online @ [FPM, US GOODS]</strong>, the <strong>Apple App
+                Store®</strong> & the <strong>Google Play™</strong></p>
+            <div class="footer-links">
+                <a href="#">Trademarks</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">All Apps</a>
+                <a href="#">Prorate Calculator | PRO</a>
+                <a href="#">Prorate Calculator | FREE</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2018-<span id="current-year"></span> IROIRO, LLC. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript to update the year -->
+    <script>
+        document.getElementById("current-year").textContent = new Date().getFullYear();
+    </script>
 </div>
 </body>
 </html>

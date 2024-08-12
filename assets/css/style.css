@@ -77,35 +77,68 @@ nav ul li a {
 
 /* Text and image columns */
 #content-section .text-column {
-    flex: 1; /* Allow the text column to take up equal space */
+    flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center text vertically */
-    padding-right: 20px; /* Space between text and image */
-    box-sizing: border-box; /* Include padding in width */
-}
-
-#content-section .image-column {
-    flex: 1; /* Allow the image column to take up equal space */
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center images */
-    justify-content: center; /* Center images vertically */
-    box-sizing: border-box; /* Include padding in width */
-}
-
-.image-logo img {
-    width: 100%; /* Full width of container */
-    height: auto; /* Maintain aspect ratio */
-    max-width: 100%; /* Max width constraint */
-    margin-bottom: 20px; /* Space below image */
+    justify-content: space-between; /* Ensure space is used effectively */
+    padding-right: 20px;
+    box-sizing: border-box;
 }
 
 #content-section .app-download {
     display: flex;
-    flex-direction: column; /* Stack images */
+    flex-direction: row; /* Horizontal layout */
+    justify-content: flex-start; /* Align images to the left */
     gap: 20px; /* Space between images */
     align-items: center;
-    width: 100%;
-    max-width: 100%;
+    margin-top: 20px; /* Space between text and images */
+}
+
+#content-section .app-download img {
+    width: auto; /* Maintain aspect ratio */
+    height: 50px; /* Set consistent height for images */
+}
+
+/* Footer Section */
+footer {
+    background-color: black; /* Black background color */
+    color: white; /* White text color */
+    padding: 20px; /* Padding for the footer */
+    text-align: center; /* Center-align text */
+    font-size: 14px; /* Font size for footer text */
+    border-radius: 20px; /* Rounded corners for the footer */
+    margin-top: 40px; /* Space above the footer */
+    max-width: 1200px; /* Match the content section width */
+    margin-left: auto; /* Center the footer horizontally */
+    margin-right: auto; /* Center the footer horizontally */
+}
+
+.footer-content {
+    margin-bottom: 10px; /* Space between content and bottom text */
+}
+
+.footer-content p {
+    margin: 0 0 10px 0; /* No margin on top and bottom margin */
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center; /* Center the links */
+    gap: 15px; /* Space between the links */
+    flex-wrap: wrap; /* Wrap to new line if not enough space */
+}
+
+.footer-links a {
+    color: white; /* White text color */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Bold text */
+}
+
+.footer-bottom {
+    border-top: 1px solid white; /* White border line on top */
+    padding-top: 10px; /* Padding on top of the bottom text */
+}
+
+.footer-bottom p {
+    margin: 0; /* No margin */
 }
