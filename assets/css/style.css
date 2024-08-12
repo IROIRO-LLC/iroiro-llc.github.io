@@ -5,32 +5,32 @@ body, html {
     width: 100%;
     height: 100%;
     font-family: 'Arial', sans-serif;
-    background-color: white; /* Ensure background is white */
-    color: black; /* Default text color */
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+    background-color: white;
+    color: black;
+    overflow-x: hidden;
 }
 
 /* Page background framing */
 .page-wrapper {
     position: relative;
-    min-height: 100vh; /* Full viewport height */
-    padding: 5vw; /* Increased padding for thicker white frame, responsive */
-    background: white; /* White background for the page */
-    box-sizing: border-box; /* Include padding in element's total width and height */
-    overflow-y: auto; /* Allow vertical scrolling */
+    min-height: 100vh;
+    padding: 5vw;
+    background: white;
+    box-sizing: border-box;
+    overflow-y: auto;
 }
 
 /* Inner container for the content with background image */
 .container {
     position: relative;
-    padding: 5vw; /* Updated padding for the thicker frame, responsive */
-    background-image: url('../images/background.jpg'); /* Background image */
-    background-size: cover; /* Cover the entire container */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* No repeating */
-    border-radius: 1.25rem; /* Rounded corners, responsive */
-    min-height: calc(100vh - 10vw); /* Ensure container is at least as tall as the viewport, responsive */
-    box-sizing: border-box; /* Include padding in width and height */
+    padding: 5vw;
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 1.25rem;
+    min-height: calc(100vh - 10vw);
+    box-sizing: border-box;
 }
 
 /* Header styles */
@@ -38,41 +38,41 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem 0; /* Responsive padding */
+    padding: 2rem 0;
 }
 
 .text-logo {
-    font-size: 1.5rem; /* Responsive font size */
+    font-size: 1.5rem;
     font-weight: bold;
-    color: white; /* White text to contrast against the background image */
+    color: white;
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 1.25rem; /* Responsive gap */
+    gap: 1.25rem;
 }
 
 nav ul li a {
-    color: white; /* White text color */
+    color: white;
     text-decoration: none;
-    padding: 0.3rem 0.6rem; /* Responsive padding */
-    border-radius: 0.9375rem; /* Responsive border radius */
-    border: 0.125rem solid white; /* White border around the nav items, responsive */
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.9375rem;
+    border: 0.125rem solid white;
 }
 
 /* Content section styles */
 #content-section {
     display: flex;
-    justify-content: space-between; /* Space between text and images */
-    align-items: center; /* Center align vertically */
-    background-color: white; /* White background for the content section */
-    padding: 5vw; /* Responsive padding */
-    box-shadow: none; /* No shadow */
-    border-radius: 1.25rem; /* Rounded corners, responsive */
-    max-width: 75vw; /* Responsive width */
-    margin: 4vw auto; /* Center the content and add space above, responsive */
-    box-sizing: border-box; /* Include padding in element's total width and height */
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: white;
+    padding: 5vw;
+    box-shadow: none;
+    border-radius: 1.25rem;
+    max-width: 75vw;
+    margin: 4vw auto;
+    box-sizing: border-box;
 }
 
 /* Text and image columns */
@@ -80,65 +80,104 @@ nav ul li a {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Ensure space is used effectively */
-    padding-right: 1.25rem; /* Responsive padding */
+    justify-content: flex-start;
     box-sizing: border-box;
+    padding-right: 1.25rem;
 }
 
+#content-section .image-column {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#content-section .logo-image {
+    max-width: 100%;
+    margin: 2rem 0;
+    border-radius: 1rem;
+}
+
+/* Hide the inline logo by default */
+.logo-image-inline {
+    display: none;
+}
+
+/* Adjust the download buttons */
 #content-section .app-download {
     display: flex;
-    flex-direction: row; /* Horizontal layout */
-    justify-content: flex-start; /* Align images to the left */
-    gap: 1.25rem; /* Responsive gap */
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1.25rem;
     align-items: center;
-    margin-top: 1.25rem; /* Responsive margin */
+    margin-top: 1.25rem;
 }
 
 #content-section .app-download img {
-    width: auto; /* Maintain aspect ratio */
-    height: 3.125rem; /* Set consistent height for images, responsive */
+    width: auto;
+    height: 3.125rem;
 }
 
 /* Footer Section */
 footer {
-    background-color: black; /* Black background color */
-    color: white; /* White text color */
-    padding: 2rem; /* Responsive padding */
-    text-align: center; /* Center-align text */
-    font-size: 0.875rem; /* Responsive font size */
-    border-radius: 1.25rem; /* Rounded corners for the footer, responsive */
-    margin-top: 4vw; /* Responsive margin */
-    max-width: 75vw; /* Match the content section width, responsive */
-    margin-left: auto; /* Center the footer horizontally */
-    margin-right: auto; /* Center the footer horizontally */
+    background-color: black;
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.875rem;
+    border-radius: 1.25rem;
+    margin-top: 4vw;
+    max-width: 75vw;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .footer-content {
-    margin-bottom: 0.625rem; /* Responsive margin */
+    margin-bottom: 0.625rem;
 }
 
 .footer-content p {
-    margin: 0 0 0.625rem 0; /* Responsive margin */
+    margin: 0 0 0.625rem 0;
 }
 
 .footer-links {
     display: flex;
-    justify-content: center; /* Center the links */
-    gap: 1rem; /* Responsive gap */
-    flex-wrap: wrap; /* Wrap to new line if not enough space */
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .footer-links a {
-    color: white; /* White text color */
-    text-decoration: none; /* Remove underline */
-    font-weight: bold; /* Bold text */
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 .footer-bottom {
-    border-top: 0.0625rem solid white; /* White border line on top, responsive */
-    padding-top: 0.625rem; /* Responsive padding */
+    border-top: 0.0625rem solid white;
+    padding-top: 0.625rem;
 }
 
 .footer-bottom p {
-    margin: 0; /* No margin */
+    margin: 0;
+}
+
+/* Responsive behavior: stack columns vertically if not enough space */
+@media (max-width: 900px) {
+    #content-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #content-section .text-column {
+        padding-right: 0;
+    }
+
+    #content-section .image-column {
+        display: none; /* Hide the image column */
+    }
+
+    #content-section .logo-image-inline {
+        display: block; /* Show inline logo */
+    }
 }
