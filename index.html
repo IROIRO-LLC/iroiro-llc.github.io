@@ -15,16 +15,7 @@
     </div>
 
     <div class="container">
-        <header>
-            <div class="text-logo">IROIRO | 色々</div>
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Brands</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
+        <div id="header"></div>
         <div class="background-pattern"></div>
     </div>
 
@@ -66,33 +57,24 @@
         </div>
     </section>
 
-    <!-- Footer Section -->
-    <footer>
-        <div class="footer-content">
-            <p>Support our journey by shopping with us online [<strong><a
-                    href="https://fullpanicmanic.com">FPM</a></strong>, <strong><a
-                    href="https://iroirogoods.com">IROIRO GOODS</a></strong>], the
-                <strong><a href="https://apps.apple.com/us/developer/iroiro-llc/id1435048158">Apple App
-                    Store®</a></strong> & the <strong><a
-                        href="https://play.google.com/store/apps/dev?id=6528214586264150108&hl=en_US">Google
-                    Play™</a></strong></p>
-            <div class="footer-links">
-                <a href="#">Trademarks</a>
-                <a href="/pages/privacy-policy.html">Privacy Policy</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2018-<span id="current-year"></span> IROIRO, LLC. All rights reserved.</p>
-        </div>
-    </footer>
+    <div id="footer"></div>
 
-    <!-- JavaScript to update the year -->
+    <!-- JavaScript to load header and footer -->
     <script>
-        document.getElementById("current-year").textContent = new Date().getFullYear();
-    </script>
+        // Load header and footer, then initialize pagination dots
+        function loadHeaderAndFooter() {
+            return Promise.all([
+                fetch('header.html').then(response => response.text()).then(data => {
+                    document.getElementById('header').innerHTML = data;
+                }),
+                fetch('footer.html').then(response => response.text()).then(data => {
+                    document.getElementById('footer').innerHTML = data;
+                    // Update year in footer
+                    document.getElementById("current-year").textContent = new Date().getFullYear();
+                })
+            ]);
+        }
 
-    <!-- JavaScript to toggle active class on pagination dots -->
-    <script>
         // Function to update the active dot based on which section is in view
         function observeSections() {
             const paginationDots = document.querySelectorAll('.pagination-dot');
@@ -130,8 +112,10 @@
             observer.observe(contentSection);
         }
 
-        // Run the observer function on page load
-        window.addEventListener('load', observeSections);
+        // Run the loadHeaderAndFooter function and then observe sections
+        window.addEventListener('load', () => {
+            loadHeaderAndFooter().then(observeSections);
+        });
     </script>
 </div>
 </body>
