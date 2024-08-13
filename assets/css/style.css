@@ -84,6 +84,7 @@ nav ul li a {
     justify-content: flex-start;
     box-sizing: border-box;
     padding-right: 1.25rem;
+    text-align: left; /* Keep text left-justified */
 }
 
 #content-section .image-column {
@@ -104,11 +105,45 @@ nav ul li a {
     display: none;
 }
 
+/* Center the inline logo and h1 title in vertical layout */
+@media (max-width: 900px) {
+    #content-section .logo-image-inline {
+        display: block;
+        margin: 1rem 0; /* Space above and below logo */
+        max-width: 80%; /* Ensure logo does not exceed container width */
+        align-self: center; /* Center logo horizontally */
+    }
+
+    #content-section .text-column {
+        padding-right: 0; /* Remove right padding in vertical layout */
+        text-align: left; /* Keep text left-justified */
+        align-items: center; /* Center content vertically */
+        display: flex;
+        flex-direction: column;
+    }
+
+    #content-section h1 {
+        margin: 0; /* Remove default margin */
+        text-align: center; /* Center text horizontally */
+        width: 100%; /* Ensure it spans the full width */
+    }
+
+    #content-section .app-download {
+        flex-direction: row; /* Keep download buttons in a row */
+        justify-content: center; /* Center download buttons horizontally in vertical layout */
+        margin-top: 1.25rem; /* Space from text and logo */
+    }
+
+    #content-section .image-column {
+        display: none; /* Hide the image column */
+    }
+}
+
 /* Adjust the download buttons */
 #content-section .app-download {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: flex-start; /* Keep download buttons aligned to the start */
     gap: 1.25rem;
     align-items: center;
     margin-top: 1.25rem;
@@ -139,6 +174,17 @@ footer {
 
 .footer-content p {
     margin: 0 0 0.625rem 0;
+}
+
+/* Apply hyperlink styles only in the footer */
+footer a {
+    color: white; /* Set hyperlink color to white */
+    text-decoration: none; /* Remove underline from hyperlinks */
+}
+
+footer a:hover, footer a:focus {
+    text-decoration: underline; /* Add underline on hover or focus */
+    color: #23cdfe; /* Change color on hover or focus */
 }
 
 .footer-links {
@@ -212,25 +258,5 @@ footer {
         width: 0.5rem;
         height: 0.5rem;
         border-width: 1px;
-    }
-}
-
-/* Responsive behavior: stack columns vertically if not enough space */
-@media (max-width: 900px) {
-    #content-section {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    #content-section .text-column {
-        padding-right: 0;
-    }
-
-    #content-section .image-column {
-        display: none; /* Hide the image column */
-    }
-
-    #content-section .logo-image-inline {
-        display: block; /* Show inline logo */
     }
 }
