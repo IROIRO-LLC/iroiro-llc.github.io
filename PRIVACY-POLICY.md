@@ -1,3 +1,3 @@
 layout: page
 title: "Privacy Policy"
-permalink: /privacy-policy
+permalink: /pages/privacy-policy
