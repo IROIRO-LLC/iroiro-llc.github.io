@@ -38,8 +38,25 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 0; /* Reduced padding to move up */
-    margin-top: -1rem; /* Negative margin to move it up further */
+    padding: 1rem;
+    margin-top: 2vw; /* Matches footer's margin */
+    border-radius: 1.25rem; /* Same rounding as the footer */
+    width: 100%; /* Ensure header spans the full width */
+    max-width: 75vw; /* Same width as the footer */
+    margin-left: auto; /* Center align */
+    margin-right: auto; /* Center align */
+}
+
+/* Apply header background image to all pages except index.html */
+body:not(.index) header {
+    background-image: url('../images/background.jpg'); /* Adjust the path to your background image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 1.25rem; /* Same rounding as the footer */
+    padding: 2rem; /* Ensure padding consistency with the footer */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add subtle shadow for elevation effect */
 }
 
 .text-logo {
@@ -163,7 +180,8 @@ footer {
     font-size: 0.875rem;
     border-radius: 1.25rem;
     margin-top: 4vw;
-    max-width: 75vw;
+    width: 100%; /* Ensure footer spans the full width */
+    max-width: 75vw; /* Same width as the header */
     margin-left: auto;
     margin-right: auto;
 }
