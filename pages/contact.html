@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - IROIRO | 色々</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<div class="page-wrapper">
+    <div id="header"></div>
+
+    <!-- Page-specific content here -->
+    <section id="content-section">
+        <div class="text-column">
+            <h1>Contact Us</h1>
+            <p>Contact information for the company...</p>
+        </div>
+    </section>
+
+    <div id="footer"></div>
+
+    <script>
+        // Load header
+        fetch('../header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+
+        // Load footer
+        fetch('../footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+                // Update year
+                document.getElementById("current-year").textContent = new Date().getFullYear();
+            });
+    </script>
+</div>
+</body>
+</html>
