@@ -14,7 +14,7 @@ body, html {
 .page-wrapper {
     position: relative;
     min-height: 100vh;
-    padding: 5vw;
+    padding: 3vw; /* Adjusted padding for even spacing */
     background: white;
     box-sizing: border-box;
     overflow-y: auto;
@@ -23,13 +23,13 @@ body, html {
 /* Inner container for the content with background image */
 .container {
     position: relative;
-    padding: 5vw;
+    padding: 3vw; /* Adjusted padding for thinner border */
     background-image: url('../images/background.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 1.25rem;
-    min-height: calc(100vh - 10vw);
+    min-height: calc(100vh - 6vw); /* Adjusted height calculation */
     box-sizing: border-box;
 }
 
@@ -38,7 +38,8 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem 0;
+    padding: 1rem 0; /* Reduced padding to move up */
+    margin-top: -1rem; /* Negative margin to move it up further */
 }
 
 .text-logo {
@@ -67,7 +68,7 @@ nav ul li a {
     justify-content: space-between;
     align-items: flex-start;
     background-color: white;
-    padding: 5vw;
+    padding: 3vw; /* Adjusted padding for consistent border */
     box-shadow: none;
     border-radius: 1.25rem;
     max-width: 75vw;
@@ -160,6 +161,58 @@ footer {
 
 .footer-bottom p {
     margin: 0;
+}
+
+/* Pagination dots */
+.pagination-dots {
+    position: fixed;
+    top: 50%;
+    right: 2vw;
+    display: flex;
+    flex-direction: column;
+    transform: translateY(-50%);
+    gap: 1rem;
+    z-index: 1000;
+}
+
+.pagination-dot {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 2px solid black;
+    transition: background-color 0.3s ease;
+}
+
+.pagination-dot.active {
+    background-color: black;
+}
+
+/* Responsive pagination dots */
+@media (max-width: 900px) {
+    .pagination-dots {
+        right: 1vw;
+        gap: 0.75rem;
+    }
+
+    .pagination-dot {
+        width: 0.75rem;
+        height: 0.75rem;
+        border-width: 1.5px;
+    }
+}
+
+@media (max-width: 600px) {
+    .pagination-dots {
+        right: 0.5vw;
+        gap: 0.5rem;
+    }
+
+    .pagination-dot {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-width: 1px;
+    }
 }
 
 /* Responsive behavior: stack columns vertically if not enough space */

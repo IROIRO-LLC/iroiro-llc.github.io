@@ -46,10 +46,10 @@
 
             <p>
                 At 色々, we believe in addressing life’s challenges with a comprehensive approach. We recognize that
-                everyone
-                faces unique hurdles, and our mission is to provide solutions that cater to these diverse needs. We are
-                dedicated to collaborating with like-minded brands to create products and experiences that significantly
-                improve the quality of life for our users.
+                everyone faces unique hurdles, and our mission is to provide solutions that cater to these diverse
+                needs.
+                We are dedicated to collaborating with like-minded brands to create products and experiences that
+                significantly improve the quality of life for our users.
             </p>
 
             <div class="app-download">
@@ -67,8 +67,8 @@
     <!-- Footer Section -->
     <footer>
         <div class="footer-content">
-            <p>Support our journey by shopping with us <strong>Online @ [FPM, US GOODS]</strong>, the <strong>Apple App
-                Store®</strong> & the <strong>Google Play™</strong></p>
+            <p>Support our journey by shopping with us <strong>Online @ [FPM, US GOODS]</strong>, the
+                <strong>Apple App Store®</strong> & the <strong>Google Play™</strong></p>
             <div class="footer-links">
                 <a href="#">Trademarks</a>
                 <a href="#">Privacy Policy</a>
@@ -85,6 +85,49 @@
     <!-- JavaScript to update the year -->
     <script>
         document.getElementById("current-year").textContent = new Date().getFullYear();
+    </script>
+
+    <!-- JavaScript to toggle active class on pagination dots -->
+    <script>
+        // Function to update the active dot based on which section is in view
+        function observeSections() {
+            const paginationDots = document.querySelectorAll('.pagination-dot');
+
+            const options = {
+                root: null, // null means observing relative to the viewport
+                threshold: 0.5 // 50% of the element must be in view to trigger the callback
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (entry.target.id === 'header-section') {
+                            // When the header is in view
+                            paginationDots[0].classList.add('active');
+                            paginationDots[1].classList.remove('active');
+                        } else if (entry.target.id === 'content-section') {
+                            // When the content section is in view
+                            paginationDots[1].classList.add('active');
+                            paginationDots[0].classList.remove('active');
+                        }
+                    }
+                });
+            }, options);
+
+            // Observe the sections
+            const headerSection = document.querySelector('header');
+            const contentSection = document.getElementById('content-section');
+
+            // Assign IDs to the sections for easier identification
+            headerSection.id = 'header-section';
+            contentSection.id = 'content-section';
+
+            observer.observe(headerSection);
+            observer.observe(contentSection);
+        }
+
+        // Run the observer function on page load
+        window.addEventListener('load', observeSections);
     </script>
 </div>
 </body>
