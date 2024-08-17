@@ -38,13 +38,15 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
-    margin-top: 2vw; /* Matches footer's margin */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
     border-radius: 1.25rem; /* Same rounding as the footer */
     width: 100%; /* Ensure header spans the full width */
-    max-width: 75vw; /* Same width as the footer */
-    margin-left: auto; /* Center align */
-    margin-right: auto; /* Center align */
+    max-width: 100%; /* Ensure it does not exceed the viewport width */
+    box-sizing: border-box; /* Include padding and border in the element's total width */
+    position: relative; /* Ensure it is positioned correctly */
+    top: -1rem; /* Move the header up */
+    left: 0; /* Align to the left of the viewport */
 }
 
 /* Apply header background image to all pages except index.html */
@@ -54,8 +56,8 @@ body:not(.index) header {
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 1.25rem; /* Same rounding as the footer */
-    padding: 2rem; /* Ensure padding consistency with the footer */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    padding: 0; /* Remove padding */
+    box-sizing: border-box; /* Include padding and border in the element's total width */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add subtle shadow for elevation effect */
 }
 
