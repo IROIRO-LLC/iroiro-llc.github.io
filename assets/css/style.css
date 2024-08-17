@@ -256,7 +256,7 @@ footer a:hover, footer a:focus {
 .pagination-dots {
     position: fixed;
     top: 50%;
-    right: 2vw;
+    right: 2vw; /* Adjusted for margin from right edge */
     display: flex;
     flex-direction: column;
     transform: translateY(-50%);
@@ -280,7 +280,7 @@ footer a:hover, footer a:focus {
 /* Responsive pagination dots */
 @media (max-width: 900px) {
     .pagination-dots {
-        right: 1vw;
+        right: 1vw; /* Adjusted for smaller screens */
         gap: 0.75rem;
     }
 
@@ -293,4 +293,13 @@ footer a:hover, footer a:focus {
 
 @media (max-width: 600px) {
     .pagination-dots {
-        right: 0.5
+        right: 0.5vw; /* Adjusted for even smaller screens */
+        gap: 0.5rem;
+    }
+
+    .pagination-dot {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-width: 1px;
+    }
+}
