@@ -33,6 +33,12 @@ body, html {
     box-sizing: border-box;
 }
 
+/* Specific style for non-index pages to adjust background image height */
+body:not(.index) .container {
+    padding-bottom: 3vw; /* Make bottom padding match the top padding */
+    min-height: auto; /* Remove specific height to allow for shorter container */
+}
+
 /* Header styles */
 header {
     display: flex;
@@ -45,20 +51,14 @@ header {
     max-width: 100%; /* Ensure it does not exceed the viewport width */
     box-sizing: border-box; /* Include padding and border in the element's total width */
     position: relative; /* Ensure it is positioned correctly */
-    top: -1rem; /* Move the header up */
+    top: 0; /* Align header to the top of the viewport */
     left: 0; /* Align to the left of the viewport */
+    height: 4rem; /* Ensure header height is consistent */
 }
 
-/* Apply header background image to all pages except index.html */
+/* Adjustments for specific pages */
 body:not(.index) header {
-    background-image: url('../images/background.jpg'); /* Adjust the path to your background image */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 1.25rem; /* Same rounding as the footer */
-    padding: 0; /* Remove padding */
-    box-sizing: border-box; /* Include padding and border in the element's total width */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add subtle shadow for elevation effect */
+    top: 0; /* Ensure header position is consistent across non-index pages */
 }
 
 .text-logo {
