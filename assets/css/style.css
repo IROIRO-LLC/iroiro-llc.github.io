@@ -118,6 +118,17 @@ nav ul li a {
     box-sizing: border-box;
 }
 
+/* Centering #content-section on index.html */
+body.index #content-section {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0; /* Reset margin to avoid conflicts */
+    max-width: 75vw; /* Ensure content width is controlled */
+    box-sizing: border-box; /* Include padding and borders in width/height */
+}
+
 /* Text and image columns */
 #content-section .text-column {
     flex: 1;
