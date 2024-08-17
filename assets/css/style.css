@@ -20,17 +20,40 @@ body, html {
     overflow-y: auto;
 }
 
+/* Keyframes for scrolling animation */
+@-webkit-keyframes bg-scrolling {
+    0% { background-position: 0 0; }
+    100% { background-position: 50px 50px; }
+}
+@-moz-keyframes bg-scrolling {
+    0% { background-position: 0 0; }
+    100% { background-position: 50px 50px; }
+}
+@-o-keyframes bg-scrolling {
+    0% { background-position: 0 0; }
+    100% { background-position: 50px 50px; }
+}
+@keyframes bg-scrolling {
+    0% { background-position: 0 0; }
+    100% { background-position: 50px 50px; }
+}
+
 /* Inner container for the content with background image */
 .container {
     position: relative;
     padding: 3vw; /* Adjusted padding for thinner border */
     background-image: url('../images/background.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-size: 50px 50px; /* Set the size of the background image */
+    background-position: 0 0;
+    background-repeat: repeat;
     border-radius: 1.25rem;
     min-height: calc(100vh - 6vw); /* Adjusted height calculation */
     box-sizing: border-box;
+
+    -webkit-animation: bg-scrolling 0.92s linear infinite; /* Safari 4+ */
+    -moz-animation: bg-scrolling 0.92s linear infinite;    /* Fx 5+ */
+    -o-animation: bg-scrolling 0.92s linear infinite;      /* Opera 12+ */
+    animation: bg-scrolling 0.92s linear infinite;         /* IE 10+ */
 }
 
 /* Specific style for non-index pages to adjust background image height */
@@ -270,13 +293,4 @@ footer a:hover, footer a:focus {
 
 @media (max-width: 600px) {
     .pagination-dots {
-        right: 0.5vw;
-        gap: 0.5rem;
-    }
-
-    .pagination-dot {
-        width: 0.5rem;
-        height: 0.5rem;
-        border-width: 1px;
-    }
-}
+        right: 0.5
