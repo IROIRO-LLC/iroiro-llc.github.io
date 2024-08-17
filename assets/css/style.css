@@ -110,7 +110,7 @@ nav ul li a {
     justify-content: space-between;
     align-items: flex-start;
     background-color: white;
-    padding: 3vw; /* Adjusted padding for consistent border */
+    padding: 1.0vw; /* Adjusted padding for consistent border */
     box-shadow: none;
     border-radius: 1.25rem;
     max-width: 75vw;
