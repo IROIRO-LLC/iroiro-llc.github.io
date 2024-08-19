@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brands - IROIRO | 色々</title>
     <link rel="stylesheet" href="../assets/css/style.css">
+    <!-- Load JavaScript module -->
+    <script src="../assets/js/loadHeaderAndFooter.js" type="module" defer></script>
+    <script src="../assets/js/observeSections.js" type="module" defer></script>
 </head>
-<body> <!-- Keeping the body tag without 'index' class -->
+<body>
 <div class="page-wrapper">
-    <div class="container"> <!-- Added container to match the structure of the index page -->
+    <div class="container">
         <div id="header"></div>
     </div>
 
@@ -21,24 +24,6 @@
     </section>
 
     <div id="footer"></div>
-
-    <script>
-        // Load header
-        fetch('../header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header').innerHTML = data;
-            });
-
-        // Load footer
-        fetch('../footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer').innerHTML = data;
-                // Update year
-                document.getElementById("current-year").textContent = new Date().getFullYear();
-            });
-    </script>
 </div>
 </body>
 </html>

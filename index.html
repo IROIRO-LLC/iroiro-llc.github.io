@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IROIRO | 色々</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script src="/assets/js/loadHeaderAndFooter.js" type="module" defer></script>
+    <script src="/assets/js/observeSections.js" type="module" defer></script>
 </head>
 <body class="index"> <!-- Added 'index' class to the body tag -->
 <div class="page-wrapper">
@@ -24,7 +26,7 @@
                 <h1>BEAUTIFUL EVERYDAY LIFE SOLUTIONS.</h1>
 
                 <!-- Logo image for smaller screens (hidden by default) -->
-                <img src="assets/images/logo.png" alt="IROIRO Logo" class="logo-image logo-image-inline">
+                <img src="/assets/images/logo.png" alt="IROIRO Logo" class="logo-image logo-image-inline">
 
                 <p>
                     Welcome to <strong>IROIRO</strong>, a dynamic lifestyle brand committed to delivering a diverse
@@ -47,15 +49,15 @@
 
                 <div class="app-download">
                     <a href="https://apps.apple.com/us/developer/iroiro-llc/id1435048158"><img
-                            src="assets/images/appstore.png" alt="Download on the App Store"></a>
+                            src="/assets/images/appstore.png" alt="Download on the App Store"></a>
                     <a href="https://play.google.com/store/apps/dev?id=6528214586264150108&hl=en_US"><img
-                            src="assets/images/googleplay.png" alt="Get it on Google Play"></a>
+                            src="/assets/images/googleplay.png" alt="Get it on Google Play"></a>
                 </div>
             </div>
 
             <div class="image-column">
                 <!-- Logo image for larger screens -->
-                <img src="assets/images/logo.png" alt="IROIRO Logo" class="logo-image logo-image-column">
+                <img src="/assets/images/logo.png" alt="IROIRO Logo" class="logo-image logo-image-column">
             </div>
         </section>
     </div>
@@ -65,7 +67,7 @@
             <h1>BEAUTIFUL EVERYDAY LIFE SOLUTIONS.</h1>
 
             <!-- Logo image for smaller screens (hidden by default) -->
-            <img src="assets/images/logo.png" alt="IROIRO Logo" class="logo-image logo-image-inline">
+            <img src="/assets/images/logo.png" alt="IROIRO Logo" class="logo-image logo-image-inline">
 
             <p>
                 Welcome to <strong>IROIRO</strong>, a dynamic lifestyle brand committed to delivering a diverse
@@ -88,83 +90,19 @@
 
             <div class="app-download">
                 <a href="https://apps.apple.com/us/developer/iroiro-llc/id1435048158"><img
-                        src="assets/images/appstore.png" alt="Download on the App Store"></a>
+                        src="/assets/images/appstore.png" alt="Download on the App Store"></a>
                 <a href="https://play.google.com/store/apps/dev?id=6528214586264150108&hl=en_US"><img
-                        src="assets/images/googleplay.png" alt="Get it on Google Play"></a>
+                        src="/assets/images/googleplay.png" alt="Get it on Google Play"></a>
             </div>
         </div>
 
         <div class="image-column">
             <!-- Logo image for larger screens -->
-            <img src="assets/images/logo.png" alt="IROIRO Logo" class="logo-image logo-image-column">
+            <img src="/assets/images/logo.png" alt="IROIRO Logo" class="logo-image logo-image-column">
         </div>
     </section>
     <!-- Footer Section -->
     <div id="footer"></div>
-
-    <!-- JavaScript to load header and footer -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Load header and footer content
-            function loadHeaderAndFooter() {
-                return Promise.all([
-                    fetch('header.html').then(response => response.text()).then(data => {
-                        document.getElementById('header').innerHTML = data;
-                    }),
-                    fetch('footer.html').then(response => response.text()).then(data => {
-                        document.getElementById('footer').innerHTML = data;
-                        // Update year in footer
-                        document.getElementById("current-year").textContent = new Date().getFullYear();
-                    })
-                ]);
-            }
-
-            // Function to update the active dot based on which section is in view
-            function observeSections() {
-                const paginationDots = document.querySelectorAll('.pagination-dot');
-
-                const options = {
-                    root: null, // null means observing relative to the viewport
-                    threshold: 0.5 // 50% of the element must be in view to trigger the callback
-                };
-
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            // Check which section is in view and update dots
-                            if (entry.target.id === 'header') {
-                                // Header is in view
-                                paginationDots[0].classList.add('active');
-                                paginationDots[1].classList.remove('active');
-                            } else if (entry.target.id === 'content-section-small') {
-                                // Content Section Small is in view
-                                paginationDots[1].classList.add('active');
-                                paginationDots[0].classList.remove('active');
-                            } else if (entry.target.id === 'footer') {
-                                // Footer is in view
-                                paginationDots[1].classList.add('active');
-                                paginationDots[0].classList.remove('active');
-                            }
-                        }
-                    });
-                }, options);
-
-                // Observe the sections
-                const headerSection = document.getElementById('header');
-                const contentSectionSmall = document.getElementById('content-section-small');
-                const footerSection = document.getElementById('footer');
-
-                observer.observe(headerSection);
-                observer.observe(contentSectionSmall);
-                observer.observe(footerSection);
-            }
-
-            // Run the loadHeaderAndFooter function and then observe sections
-            window.addEventListener('load', () => {
-                loadHeaderAndFooter().then(observeSections);
-            });
-        });
-    </script>
 </div>
 </body>
 </html>
