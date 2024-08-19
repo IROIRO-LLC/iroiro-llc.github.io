@@ -104,60 +104,65 @@
 
     <!-- JavaScript to load header and footer -->
     <script>
-        // Load header and footer, then initialize pagination dots
-        function loadHeaderAndFooter() {
-            return Promise.all([
-                fetch('header.html').then(response => response.text()).then(data => {
-                    document.getElementById('header').innerHTML = data;
-                }),
-                fetch('footer.html').then(response => response.text()).then(data => {
-                    document.getElementById('footer').innerHTML = data;
-                    // Update year in footer
-                    document.getElementById("current-year").textContent = new Date().getFullYear();
-                })
-            ]);
-        }
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load header and footer content
+            function loadHeaderAndFooter() {
+                return Promise.all([
+                    fetch('header.html').then(response => response.text()).then(data => {
+                        document.getElementById('header').innerHTML = data;
+                    }),
+                    fetch('footer.html').then(response => response.text()).then(data => {
+                        document.getElementById('footer').innerHTML = data;
+                        // Update year in footer
+                        document.getElementById("current-year").textContent = new Date().getFullYear();
+                    })
+                ]);
+            }
 
-        // Function to update the active dot based on which section is in view
-        function observeSections() {
-            const paginationDots = document.querySelectorAll('.pagination-dot');
+            // Function to update the active dot based on which section is in view
+            function observeSections() {
+                const paginationDots = document.querySelectorAll('.pagination-dot');
 
-            const options = {
-                root: null, // null means observing relative to the viewport
-                threshold: 0.5 // 50% of the element must be in view to trigger the callback
-            };
+                const options = {
+                    root: null, // null means observing relative to the viewport
+                    threshold: 0.5 // 50% of the element must be in view to trigger the callback
+                };
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        if (entry.target.id === 'header-section') {
-                            // When the header is in view
-                            paginationDots[0].classList.add('active');
-                            paginationDots[1].classList.remove('active');
-                        } else if (entry.target.id === 'content-section') {
-                            // When the content section is in view
-                            paginationDots[1].classList.add('active');
-                            paginationDots[0].classList.remove('active');
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            // Check which section is in view and update dots
+                            if (entry.target.id === 'header') {
+                                // Header is in view
+                                paginationDots[0].classList.add('active');
+                                paginationDots[1].classList.remove('active');
+                            } else if (entry.target.id === 'content-section-small') {
+                                // Content Section Small is in view
+                                paginationDots[1].classList.add('active');
+                                paginationDots[0].classList.remove('active');
+                            } else if (entry.target.id === 'footer') {
+                                // Footer is in view
+                                paginationDots[1].classList.add('active');
+                                paginationDots[0].classList.remove('active');
+                            }
                         }
-                    }
-                });
-            }, options);
+                    });
+                }, options);
 
-            // Observe the sections
-            const headerSection = document.querySelector('header');
-            const contentSection = document.getElementById('content-section');
+                // Observe the sections
+                const headerSection = document.getElementById('header');
+                const contentSectionSmall = document.getElementById('content-section-small');
+                const footerSection = document.getElementById('footer');
 
-            // Assign IDs to the sections for easier identification
-            headerSection.id = 'header-section';
-            contentSection.id = 'content-section';
+                observer.observe(headerSection);
+                observer.observe(contentSectionSmall);
+                observer.observe(footerSection);
+            }
 
-            observer.observe(headerSection);
-            observer.observe(contentSection);
-        }
-
-        // Run the loadHeaderAndFooter function and then observe sections
-        window.addEventListener('load', () => {
-            loadHeaderAndFooter().then(observeSections);
+            // Run the loadHeaderAndFooter function and then observe sections
+            window.addEventListener('load', () => {
+                loadHeaderAndFooter().then(observeSections);
+            });
         });
     </script>
 </div>
