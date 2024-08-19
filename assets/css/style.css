@@ -105,7 +105,8 @@ nav ul li a {
 }
 
 /* Content section styles */
-#content-section {
+#content-section,
+#content-section-small {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -130,7 +131,8 @@ body.index #content-section {
 }
 
 /* Text and image columns */
-#content-section .text-column {
+#content-section .text-column,
+#content-section-small .text-column {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -140,14 +142,16 @@ body.index #content-section {
     text-align: left; /* Keep text left-justified */
 }
 
-#content-section .image-column {
+#content-section .image-column,
+#content-section-small .image-column {
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#content-section .logo-image {
+#content-section .logo-image,
+#content-section-small .logo-image {
     max-width: 100%;
     margin: 2rem 0;
     border-radius: 1rem;
@@ -159,15 +163,33 @@ body.index #content-section {
 }
 
 /* Center the inline logo and h1 title in vertical layout */
+@media (min-width: 901px) {
+    /* Show content-section and hide content-section-small on larger screens */
+    body.index #content-section {
+        display: flex;
+    }
+    body.index #content-section-small {
+        display: none;
+    }
+}
+
 @media (max-width: 900px) {
-    #content-section .logo-image-inline {
+    /* Show content-section-small and hide content-section on smaller screens */
+    body.index #content-section {
+        display: none;
+    }
+    body.index #content-section-small {
+        display: flex;
+    }
+
+    #content-section-small .logo-image-inline {
         display: block;
         margin: 1rem 0; /* Space above and below logo */
         max-width: 80%; /* Ensure logo does not exceed container width */
         align-self: center; /* Center logo horizontally */
     }
 
-    #content-section .text-column {
+    #content-section-small .text-column {
         padding-right: 0; /* Remove right padding in vertical layout */
         text-align: left; /* Keep text left-justified */
         align-items: center; /* Center content vertically */
@@ -175,25 +197,26 @@ body.index #content-section {
         flex-direction: column;
     }
 
-    #content-section h1 {
+    #content-section-small h1 {
         margin: 0; /* Remove default margin */
         text-align: center; /* Center text horizontally */
         width: 100%; /* Ensure it spans the full width */
     }
 
-    #content-section .app-download {
+    #content-section-small .app-download {
         flex-direction: row; /* Keep download buttons in a row */
         justify-content: center; /* Center download buttons horizontally in vertical layout */
         margin-top: 1.25rem; /* Space from text and logo */
     }
 
-    #content-section .image-column {
+    #content-section-small .image-column {
         display: none; /* Hide the image column */
     }
 }
 
 /* Adjust the download buttons */
-#content-section .app-download {
+#content-section .app-download,
+#content-section-small .app-download {
     display: flex;
     flex-direction: row;
     justify-content: flex-start; /* Keep download buttons aligned to the start */
@@ -202,7 +225,8 @@ body.index #content-section {
     margin-top: 1.25rem;
 }
 
-#content-section .app-download img {
+#content-section .app-download img,
+#content-section-small .app-download img {
     width: auto;
     height: 3.125rem;
 }
