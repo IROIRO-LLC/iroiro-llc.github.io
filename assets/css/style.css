@@ -88,6 +88,9 @@ body:not(.index) header {
     font-size: 1.5rem;
     font-weight: bold;
     color: white;
+    background-color: black;
+    padding: 0.5rem; /* Optional: adds padding around the text for better contrast */
+    border-radius: 0.5rem; /* Optional: rounds the corners for a softer look */
 }
 
 nav ul {
@@ -102,6 +105,7 @@ nav ul li a {
     padding: 0.3rem 0.6rem;
     border-radius: 0.9375rem;
     border: 0.125rem solid white;
+    background-color: black;
 }
 
 /* Content section styles */
