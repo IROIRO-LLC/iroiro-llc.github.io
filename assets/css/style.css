@@ -235,6 +235,81 @@ body.index #content-section {
     height: 3.125rem;
 }
 
+/* Form Section Styles */
+.form-container {
+    width: 90%; /* Set a width (e.g., 80% of the parent element) */
+    max-width: 900px; /* Optional: set a maximum width */
+    height: auto; /* Adjust height as needed, or set a specific height */
+    margin: 0 auto; /* Center horizontally */
+    padding: 20px; /* Add padding for better spacing */
+    background-color: transparent; /* Ensure no background color */
+    box-shadow: none; /* Remove drop shadow */
+    box-sizing: border-box; /* Maintain sizing consistency */
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px; /* Add slight padding for spacing within the form */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    resize: vertical; /* Restrict resizing to vertical only */
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: black;
+}
+
+.submit-button {
+    align-self: flex-start;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: black;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #444;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .form-container {
+        margin: 10px auto; /* Adjust margins for smaller screens */
+    }
+
+    .submit-button {
+        width: 100%;
+        text-align: center;
+    }
+}
+
 /* Footer Section */
 footer {
     background-color: black;
