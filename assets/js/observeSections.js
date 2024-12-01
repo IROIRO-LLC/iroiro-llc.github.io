@@ -6,6 +6,11 @@ import { loadHeaderAndFooter } from './loadHeaderAndFooter.js';
 function observeSections() {
     const paginationDots = document.querySelectorAll('.pagination-dot');
 
+    // Check if pagination dots exist
+    if (paginationDots.length === 0) {
+        return; // Exit the function if no pagination dots are present
+    }
+
     const options = {
         root: null, // null means observing relative to the viewport
         threshold: 0.5 // 50% of the element must be in view to trigger the callback
