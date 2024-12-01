@@ -18,8 +18,12 @@ function observeSections() {
                     // When the header is in view
                     paginationDots[0].classList.add('active');
                     paginationDots[1].classList.remove('active');
-                } else if (entry.target.id === 'footer-section' || entry.target.id === 'content-section-small') {
-                    // When the footer or content-section-small is in view
+                } else if (entry.target.id === 'footer-section') {
+                    // When the footer is in view
+                    paginationDots[1].classList.add('active');
+                    paginationDots[0].classList.remove('active');
+                } else if (entry.target.id === 'content-section-small') {
+                    // When content-section-small is in view (only for index.html)
                     paginationDots[1].classList.add('active');
                     paginationDots[0].classList.remove('active');
                 }
@@ -30,18 +34,23 @@ function observeSections() {
     // Observe the sections
     const headerSection = document.querySelector('header');
     const contentSection = document.getElementById('content-section');
-    const contentSectionSmall = document.getElementById('content-section-small');
     const footerSection = document.getElementById('footer');
 
     // Assign IDs to the sections for easier identification
     headerSection.id = 'header-section';
     contentSection.id = 'content-section';
-    contentSectionSmall.id = 'content-section-small';
+
+    // Only check for contentSectionSmall if it exists
+    const contentSectionSmall = document.getElementById('content-section-small');
+    if (contentSectionSmall) {
+        contentSectionSmall.id = 'content-section-small';
+        observer.observe(contentSectionSmall); // Observe only if it exists
+    }
+
     footerSection.id = 'footer-section';
 
     observer.observe(headerSection);
     observer.observe(contentSection);
-    observer.observe(contentSectionSmall);
     observer.observe(footerSection);
 }
 
