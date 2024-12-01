@@ -56,6 +56,38 @@ body, html {
     animation: bg-scrolling 0.92s linear infinite;         /* IE 10+ */
 }
 
+/* Image grid styling */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 16px; /* Space between grid items */
+    margin-top: 20px; /* Space above the grid */
+}
+
+.image-item {
+    text-align: center; /* Center text under images */
+}
+
+.image-item img {
+    width: 144px; /* Fixed width */
+    height: 144px; /* Fixed height */
+    object-fit: contain; /* Scale down to fit within the bounds */
+    border-radius: 0.5rem; /* Optional: rounded corners for images */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 900px) {
+    .image-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+    }
+}
+
+@media (max-width: 600px) {
+    .image-grid {
+        grid-template-columns: 1fr; /* 1 column on extra small screens */
+    }
+}
+
 /* Specific style for non-index pages to adjust background image height */
 body:not(.index) .container {
     padding-bottom: 3vw; /* Make bottom padding match the top padding */
