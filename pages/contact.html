@@ -9,32 +9,93 @@
     <script src="../assets/js/loadHeaderAndFooter.js" type="module" defer></script>
     <script src="../assets/js/observeSections.js" type="module" defer></script>
     <script>
-        let submitted = false;  // Declare submitted variable in the global scope
-
         document.addEventListener("DOMContentLoaded", function() {
             const form = document.querySelector('.contact-form');
+            const submitButton = form.querySelector('button[type="submit"]');
             const messageContainer = document.createElement('div');
             messageContainer.className = 'form-message';
             form.appendChild(messageContainer);
 
+            let submitted = false;
+
+            // Disable submit button initially if any required fields are empty
+            const checkRequiredFields = () => {
+                const requiredFields = form.querySelectorAll('[required]');
+                let allFilled = true;
+
+                requiredFields.forEach(field => {
+                    if (!field.value) {
+                        allFilled = false;
+                    }
+                });
+
+                // Enable or disable the submit button based on field completion
+                submitButton.disabled = !allFilled;
+                submitButton.style.opacity = allFilled ? 1 : 0.5;  // Make the button look disabled
+            };
+
+            // Add input event listeners to each field to check when they change
+            const inputs = form.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('input', checkRequiredFields);
+            });
+
+            // Check fields on page load as well
+            checkRequiredFields();
+
             form.addEventListener('submit', function(event) {
-                event.preventDefault(); // Prevent default redirection
-                submitted = true; // Track submission
+                event.preventDefault();  // Prevent the default form submission
 
-                // Disable the submit button to prevent multiple submissions
-                const submitButton = form.querySelector('button[type="submit"]');
-                submitButton.disabled = true;
+                // Capture form data
+                const firstName = document.getElementById('first-name').value;
+                const lastName = document.getElementById('last-name').value;
+                const email = document.getElementById('email').value;
+                const subject = document.getElementById('subject').value;
+                const message = document.getElementById('message').value;
 
-                form.style.opacity = 0.5; // Fade out form
+                // Construct the pre-filled Google Form URL with dynamic data
+                const googleFormURL = `https://docs.google.com/forms/d/e/1FAIpQLSdn_WS2R-3JK3jeKrXg7yyAuUoGjusEj_BV0wOShEmF9TnAoQ/formResponse?`;
 
-                // Wait for 2 seconds before showing the success message
+                const urlWithParams = googleFormURL +
+                    `entry.2143080366=${encodeURIComponent(firstName)}&` +
+                    `entry.1761265388=${encodeURIComponent(lastName)}&` +
+                    `entry.902581241=${encodeURIComponent(email)}&` +
+                    `entry.365936416=${encodeURIComponent(subject)}&` +
+                    `entry.1027082345=${encodeURIComponent(message)}`;
+
+                // Create a new hidden form to submit data to Google Forms
+                const hiddenForm = document.createElement('form');
+                hiddenForm.action = urlWithParams;
+                hiddenForm.method = 'POST';
+                hiddenForm.target = 'hidden_iframe';
+
+                // Append the hidden form to the body
+                document.body.appendChild(hiddenForm);
+
+                // Create the hidden iframe for silent form submission
+                const iframe = document.createElement('iframe');
+                iframe.name = 'hidden_iframe';
+                iframe.style.display = 'none';
+                document.body.appendChild(iframe);
+
+                // Submit the hidden form
+                hiddenForm.submit();
+
+                // Show success message
+                messageContainer.textContent = "Your submission has been processed...";
+                messageContainer.style.color = "green";
+
+                // Wait for 3 seconds before hiding the message
                 setTimeout(() => {
-                    messageContainer.textContent = "Your submission has been processed...";
-                    messageContainer.style.color = "green";
-                    form.reset(); // Clear the form after submission
-                    submitButton.disabled = false; // Re-enable submit button
-                    form.style.opacity = 1; // Restore form opacity
-                }, 2000);
+                    messageContainer.textContent = "";
+                }, 5000);
+
+                // Optionally clear the form fields
+                form.reset();
+
+                // Re-enable submit button after submission
+                submitButton.disabled = false;
+                submitButton.style.opacity = 1;
             });
         });
     </script>
@@ -49,39 +110,29 @@
     <section id="content-section">
         <div class="form-container">
             <h1>Contact Us</h1>
-            <form
-                    name="gform"
-                    id="gform"
-                    enctype="text/plain"
-                    action="https://docs.google.com/forms/d/e/1FAIpQLSdn_WS2R-3JK3jeKrXg7yyAuUoGjusEj_BV0wOShEmF9TnAoQ/formResponse?"
-                    target="hidden_iframe"
-                    onsubmit="submitted=true;"
-                    class="contact-form">
-
+            <form class="contact-form">
                 <div class="form-group">
-                    <label for="entry.2143080366">First Name</label>
-                    <input type="text" id="entry.2143080366" name="entry.2143080366" required>
+                    <label for="first-name">First Name</label>
+                    <input type="text" id="first-name" name="entry.2143080366" required>
                 </div>
                 <div class="form-group">
-                    <label for="entry.1761265388">Last Name</label>
-                    <input type="text" id="entry.1761265388" name="entry.1761265388" required>
+                    <label for="last-name">Last Name</label>
+                    <input type="text" id="last-name" name="entry.1761265388" required>
                 </div>
                 <div class="form-group">
-                    <label for="entry.1634531552">Email Address</label>
-                    <input type="email" id="entry.1634531552" name="entry.1634531552" required>
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="entry.902581241" required>
                 </div>
                 <div class="form-group">
-                    <label for="entry.473485660">Subject</label>
-                    <input type="text" id="entry.473485660" name="entry.473485660" required>
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="entry.365936416" required>
                 </div>
                 <div class="form-group">
-                    <label for="entry.1305673932">Message</label>
-                    <textarea id="entry.1305673932" name="entry.1305673932" rows="4" required></textarea>
+                    <label for="message">Message</label>
+                    <textarea id="message" name="entry.1027082345" rows="4" required></textarea>
                 </div>
-                <button type="submit" class="submit-button">Submit</button>
+                <button type="submit" class="submit-button" disabled>Submit</button>
             </form>
-
-            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {}"></iframe>
         </div>
     </section>
 
