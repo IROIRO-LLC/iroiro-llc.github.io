@@ -3,112 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact IROIRO - Get in touch with us for more information about our products and services.">
+    <meta name="theme-color" content="#000000">
     <title>Contact - IROIRO | 色々</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <!-- Load JavaScript module -->
-    <script src="../assets/js/loadHeaderAndFooter.js" type="module" defer></script>
-    <script src="../assets/js/observeSections.js" type="module" defer></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const form = document.querySelector('.contact-form');
-            const submitButton = form.querySelector('button[type="submit"]');
-            const messageContainer = document.createElement('div');
-            messageContainer.className = 'form-message';
-            form.appendChild(messageContainer);
-
-            let submitted = false;
-
-            // Disable submit button initially if any required fields are empty
-            const checkRequiredFields = () => {
-                const requiredFields = form.querySelectorAll('[required]');
-                let allFilled = true;
-
-                requiredFields.forEach(field => {
-                    if (!field.value) {
-                        allFilled = false;
-                    }
-                });
-
-                // Enable or disable the submit button based on field completion
-                submitButton.disabled = !allFilled;
-                submitButton.style.opacity = allFilled ? 1 : 0.5;  // Make the button look disabled
-            };
-
-            // Add input event listeners to each field to check when they change
-            const inputs = form.querySelectorAll('input, textarea');
-            inputs.forEach(input => {
-                input.addEventListener('input', checkRequiredFields);
-            });
-
-            // Check fields on page load as well
-            checkRequiredFields();
-
-            form.addEventListener('submit', function(event) {
-                event.preventDefault();  // Prevent the default form submission
-
-                // Capture form data
-                const firstName = document.getElementById('first-name').value;
-                const lastName = document.getElementById('last-name').value;
-                const email = document.getElementById('email').value;
-                const subject = document.getElementById('subject').value;
-                const message = document.getElementById('message').value;
-
-                // Construct the pre-filled Google Form URL with dynamic data
-                const googleFormURL = `https://docs.google.com/forms/d/e/1FAIpQLSdn_WS2R-3JK3jeKrXg7yyAuUoGjusEj_BV0wOShEmF9TnAoQ/formResponse?`;
-
-                const urlWithParams = googleFormURL +
-                    `entry.2143080366=${encodeURIComponent(firstName)}&` +
-                    `entry.1761265388=${encodeURIComponent(lastName)}&` +
-                    `entry.902581241=${encodeURIComponent(email)}&` +
-                    `entry.365936416=${encodeURIComponent(subject)}&` +
-                    `entry.1027082345=${encodeURIComponent(message)}`;
-
-                // Create a new hidden form to submit data to Google Forms
-                const hiddenForm = document.createElement('form');
-                hiddenForm.action = urlWithParams;
-                hiddenForm.method = 'POST';
-                hiddenForm.target = 'hidden_iframe';
-
-                // Append the hidden form to the body
-                document.body.appendChild(hiddenForm);
-
-                // Create the hidden iframe for silent form submission
-                const iframe = document.createElement('iframe');
-                iframe.name = 'hidden_iframe';
-                iframe.style.display = 'none';
-                document.body.appendChild(iframe);
-
-                // Submit the hidden form
-                hiddenForm.submit();
-
-                // Show success message
-                messageContainer.textContent = "Your submission has been processed...";
-                messageContainer.style.color = "green";
-
-                // Wait for 3 seconds before hiding the message
-                setTimeout(() => {
-                    messageContainer.textContent = "";
-                }, 5000);
-
-                // Optionally clear the form fields
-                form.reset();
-
-                // Re-enable submit button after submission
-                submitButton.disabled = false;
-                submitButton.style.opacity = 1;
-            });
-        });
-    </script>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/content-pages.css">
+    <link rel="icon" href="/assets/images/logo.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="page-wrapper">
-    <div class="container">
-        <div id="header"></div>
-    </div>
 
-    <!-- Page-specific content here -->
-    <section id="content-section">
-        <div class="form-container">
+<!-- Overlay Header Elements - Floats above the p5 sketch -->
+<header class="overlay-header">
+    <div class="container">
+        <div class="main-title">
+            <img src="/assets/images/logo.png" alt="IROIRO small logo" class="title-logo">
+            IROIRO <span class="jp-chars">色々</span>
+        </div>
+        <nav class="overlay-nav">
+            <a href="/index.html" class="nav-button">Home</a>
+            <a href="/pages/contact.html" class="nav-button current">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<!-- Main content starts HERE - directly over p5.js background -->
+<main>
+    <!-- Contact Section - simplified structure -->
+    <section class="content-section translucent-overlay">
+        <div class="content-container">
             <h1>Contact Us</h1>
             <form class="contact-form">
                 <div class="form-group">
@@ -136,7 +61,128 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <div id="footer"></div>
-</div>
+</main>
+
+<!-- Load p5.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+
+<!-- Load Custom Scripts -->
+<script src="/assets/js/iroiro-sketch.js"></script>
+<script src="/assets/js/observeSections.js"></script>
+
+<!-- Footer Loading Script -->
+<script>
+    // Load footer with correct path for pages in subdirectories
+    document.addEventListener("DOMContentLoaded", function() {
+        const footer = document.getElementById('footer');
+
+        if (footer) {
+            // Use absolute path to get footer from root directory
+            fetch('/footer.html')
+                .then(response => response.ok ? response.text() : Promise.reject('Footer not found'))
+                .then(data => {
+                    footer.innerHTML = data;
+                    const yearSpan = footer.querySelector('#current-year');
+                    if (yearSpan && !yearSpan.textContent) {
+                        yearSpan.textContent = new Date().getFullYear();
+                    }
+                })
+                .catch(error => console.error('Error loading footer:', error));
+        }
+    });
+</script>
+
+<!-- Contact Form JavaScript -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const form = document.querySelector('.contact-form');
+        const submitButton = form.querySelector('button[type="submit"]');
+        const messageContainer = document.createElement('div');
+        messageContainer.className = 'form-message';
+        form.appendChild(messageContainer);
+
+        // Disable submit button initially if any required fields are empty
+        const checkRequiredFields = () => {
+            const requiredFields = form.querySelectorAll('[required]');
+            let allFilled = true;
+
+            requiredFields.forEach(field => {
+                if (!field.value) {
+                    allFilled = false;
+                }
+            });
+
+            // Enable or disable the submit button based on field completion
+            submitButton.disabled = !allFilled;
+            submitButton.style.opacity = allFilled ? 1 : 0.5;  // Make the button look disabled
+        };
+
+        // Add input event listeners to each field to check when they change
+        const inputs = form.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('input', checkRequiredFields);
+        });
+
+        // Check fields on page load as well
+        checkRequiredFields();
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent the default form submission
+
+            // Capture form data
+            const firstName = document.getElementById('first-name').value;
+            const lastName = document.getElementById('last-name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            // Construct the pre-filled Google Form URL with dynamic data
+            const googleFormURL = `https://docs.google.com/forms/d/e/1FAIpQLSdn_WS2R-3JK3jeKrXg7yyAuUoGjusEj_BV0wOShEmF9TnAoQ/formResponse?`;
+
+            const urlWithParams = googleFormURL +
+                `entry.2143080366=${encodeURIComponent(firstName)}&` +
+                `entry.1761265388=${encodeURIComponent(lastName)}&` +
+                `entry.902581241=${encodeURIComponent(email)}&` +
+                `entry.365936416=${encodeURIComponent(subject)}&` +
+                `entry.1027082345=${encodeURIComponent(message)}`;
+
+            // Create a new hidden form to submit data to Google Forms
+            const hiddenForm = document.createElement('form');
+            hiddenForm.action = urlWithParams;
+            hiddenForm.method = 'POST';
+            hiddenForm.target = 'hidden_iframe';
+
+            // Append the hidden form to the body
+            document.body.appendChild(hiddenForm);
+
+            // Create the hidden iframe for silent form submission
+            const iframe = document.createElement('iframe');
+            iframe.name = 'hidden_iframe';
+            iframe.style.display = 'none';
+            document.body.appendChild(iframe);
+
+            // Submit the hidden form
+            hiddenForm.submit();
+
+            // Show success message
+            messageContainer.textContent = "Your submission has been processed...";
+            messageContainer.style.color = "#8affa4";
+
+            // Wait for 5 seconds before hiding the message
+            setTimeout(() => {
+                messageContainer.textContent = "";
+            }, 5000);
+
+            // Clear the form fields
+            form.reset();
+
+            // Re-enable submit button after submission
+            submitButton.disabled = false;
+            submitButton.style.opacity = 1;
+        });
+    });
+</script>
 </body>
 </html>

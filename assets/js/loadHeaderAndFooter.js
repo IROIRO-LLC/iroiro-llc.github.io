@@ -1,13 +1,13 @@
 // assets/js/loadHeaderAndFooter.js
 document.addEventListener("DOMContentLoaded", function() {
-    const footerPlaceholder = document.getElementById('footer-placeholder');
+    const footer = document.getElementById('footer');
 
-    if (footerPlaceholder) {
+    if (footer) {
         fetch('footer.html')
             .then(response => response.ok ? response.text() : Promise.reject('Footer not found'))
             .then(data => {
-                footerPlaceholder.innerHTML = data;
-                const yearSpan = footerPlaceholder.querySelector('#current-year');
+                footer.innerHTML = data;
+                const yearSpan = footer.querySelector('#current-year');
                 if (yearSpan && !yearSpan.textContent) {
                     yearSpan.textContent = new Date().getFullYear();
                 }
