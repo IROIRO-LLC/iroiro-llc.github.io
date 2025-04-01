@@ -1,65 +1,38 @@
-// observeSections.js
+// assets/js/observeSections.js - Example (Ensure it targets your sections)
+document.addEventListener("DOMContentLoaded", function() {
+    // Target the sections that need animation when scrolled into view
+    const sections = document.querySelectorAll('.hero-content-section, #brands');
 
-import { loadHeaderAndFooter } from './loadHeaderAndFooter.js';
-
-// Function to update the active dot based on which section is in view
-function observeSections() {
-    const paginationDots = document.querySelectorAll('.pagination-dot');
-
-    // Check if pagination dots exist
-    if (paginationDots.length === 0) {
-        return; // Exit the function if no pagination dots are present
+    if (!('IntersectionObserver' in window)) {
+        console.log("Intersection Observer not supported, animations disabled.");
+        // Optionally add a fallback class to make them visible immediately
+        sections.forEach(section => section.classList.add('is-visible'));
+        return;
     }
 
-    const options = {
-        root: null, // null means observing relative to the viewport
-        threshold: 0.5 // 50% of the element must be in view to trigger the callback
+    const observerOptions = {
+        root: null, // relative to document viewport
+        rootMargin: '0px 0px -50px 0px', // Trigger slightly before fully in view
+        threshold: 0.1 // Trigger when 10% is visible
     };
 
-    const observer = new IntersectionObserver((entries) => {
+    const observerCallback = (entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                if (entry.target.id === 'header-section') {
-                    // When the header is in view
-                    paginationDots[0].classList.add('active');
-                    paginationDots[1].classList.remove('active');
-                } else if (entry.target.id === 'footer-section') {
-                    // When the footer is in view
-                    paginationDots[1].classList.add('active');
-                    paginationDots[0].classList.remove('active');
-                } else if (entry.target.id === 'content-section-small') {
-                    // When content-section-small is in view (only for index.html)
-                    paginationDots[1].classList.add('active');
-                    paginationDots[0].classList.remove('active');
-                }
+                entry.target.classList.add('is-visible');
+                // Optional: stop observing after first time for performance
+                observer.unobserve(entry.target);
             }
+            // No 'else' needed if we only want fade-in once
         });
-    }, options);
+    };
 
-    // Observe the sections
-    const headerSection = document.querySelector('header');
-    const contentSection = document.getElementById('content-section');
-    const footerSection = document.getElementById('footer');
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
 
-    // Assign IDs to the sections for easier identification
-    headerSection.id = 'header-section';
-    contentSection.id = 'content-section';
+    sections.forEach(section => {
+        observer.observe(section);
+    });
 
-    // Only check for contentSectionSmall if it exists
-    const contentSectionSmall = document.getElementById('content-section-small');
-    if (contentSectionSmall) {
-        contentSectionSmall.id = 'content-section-small';
-        observer.observe(contentSectionSmall); // Observe only if it exists
-    }
-
-    footerSection.id = 'footer-section';
-
-    observer.observe(headerSection);
-    observer.observe(contentSection);
-    observer.observe(footerSection);
-}
-
-// Run the loadHeaderAndFooter function and then observe sections
-window.addEventListener('load', () => {
-    loadHeaderAndFooter().then(observeSections);
+    // Note: The brand item staggering is handled purely by CSS delays
+    // triggered when the parent (#brands) gets the 'is-visible' class.
 });
