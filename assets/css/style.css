@@ -11,6 +11,20 @@ body::-webkit-scrollbar {
     display: none;
 }
 
+/* Global scrollbar hiding for all containers */
+.content-card,
+.hero-content-section,
+.card-content-wrapper {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.content-card::-webkit-scrollbar,
+.hero-content-section::-webkit-scrollbar,
+.card-content-wrapper::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari and Opera */
+}
+
 /* Firefox - hide scrollbars */
 html, body {
     scrollbar-width: none;
@@ -558,19 +572,38 @@ strong {
         flex-direction: column; /* Stack text and logo */
         text-align: center;
     }
-     .card-logo {
-        max-width: 120px; /* Adjust size */
+
+    .card-logo {
+        max-width: 180px; /* Increase from 120px to give logo more space */
+        width: 100%; /* Make sure it takes full width of its container */
         margin: 0 auto 20px auto; /* Center logo block */
         flex: none;
     }
-     .card-text {
-        flex: none;
+
+    .card-logo img {
+        width: 100%; /* Make image fill the container */
+        height: auto;
+        display: block; /* Ensures proper centering */
+        margin: 0 auto; /* Additional centering for the image */
     }
+
+    .card-text {
+        flex: none;
+        width: 100%; /* Ensure text takes full width */
+    }
+
     .app-links {
         justify-content: center; /* Center badges when stacked */
     }
+
     .hero-content-section {
         padding: 60px 20px; /* Revert padding */
+        overflow: hidden; /* Remove scrollbars */
+    }
+
+    .content-card {
+        overflow: hidden; /* Remove scrollbars */
+        width: 90%; /* Ensure proper width containment */
     }
 }
 
