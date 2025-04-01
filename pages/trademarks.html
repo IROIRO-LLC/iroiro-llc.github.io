@@ -91,27 +91,7 @@
 <!-- Load Custom Scripts -->
 <script src="/assets/js/iroiro-sketch.js"></script>
 <script src="/assets/js/observeSections.js"></script>
+<script src="/assets/js/loadHeaderAndFooter.js"></script>
 
-<!-- Footer Loading Script -->
-<script>
-    // Load footer with correct path for pages in subdirectories
-    document.addEventListener("DOMContentLoaded", function() {
-        const footer = document.getElementById('footer');
-
-        if (footer) {
-            // Use absolute path to get footer from root directory
-            fetch('/footer.html')
-                .then(response => response.ok ? response.text() : Promise.reject('Footer not found'))
-                .then(data => {
-                    footer.innerHTML = data;
-                    const yearSpan = footer.querySelector('#current-year');
-                    if (yearSpan && !yearSpan.textContent) {
-                        yearSpan.textContent = new Date().getFullYear();
-                    }
-                })
-                .catch(error => console.error('Error loading footer:', error));
-        }
-    });
-</script>
 </body>
 </html>
