@@ -18,9 +18,14 @@ body {
     background-color: transparent;
 }
 
+/* Optional: If the header itself doesn't quite fill the space, adjust main padding */
 main {
     min-height: 100vh;
-    padding-top: 80px; /* Adjust based on header height */
+    /* Adjust this value to precisely match the calculated height of your fixed header */
+    /* Calculate header height: padding-top + element height + padding-bottom */
+    /* Example: If header padding is 15px top/bottom and content is 30px high = 15+30+15=60px */
+    /* Add a little extra buffer if needed: 65px or 70px */
+    padding-top: 65px; /* Example adjustment - Tweak this value! */
     display: flex;
     flex-direction: column;
 }
@@ -42,10 +47,12 @@ main {
     background-color: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
-    border-radius: 20px;
+    border-radius: 20px; /* Keep top radius if header doesn't have bottom radius */
+    /* Or potentially remove top radius if you want it flush: border-top-left-radius: 0; border-top-right-radius: 0; */
     color: #fff;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    margin: 20px auto;
+    /* Change margin: Remove top margin, keep auto horizontal margin, add bottom margin */
+    margin: 0 auto 20px auto; /* Top margin is now 0 */
     border: 1px solid rgba(255, 255, 255, 0.1);
     /* Remove any height constraints or overflow properties */
     max-height: none;
