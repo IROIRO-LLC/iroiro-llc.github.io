@@ -1,50 +1,42 @@
-// assets/js/loadHeaderAndFooter.js
+// Footer Loading Script - with try-catch and absolute/relative path handling
 document.addEventListener("DOMContentLoaded", function() {
     const footer = document.getElementById('footer');
 
     if (footer) {
-        fetch('footer.html')
-            .then(response => response.ok ? response.text() : Promise.reject('Footer not found'))
+        // Try absolute path first, then fall back to relative path if that fails
+        fetchFooter('/footer.html')
+            .catch(error => {
+                console.log("Could not load footer from absolute path, trying relative path...");
+                return fetchFooter('../footer.html');
+            })
+            .catch(error => {
+                console.log("Could not load footer from relative path, trying alternate path...");
+                return fetchFooter('footer.html');
+            })
+            .catch(error => {
+                console.error("All attempts to load footer failed:", error);
+                footer.innerHTML = '<div class="footer-bottom"><p>&copy; 2018-' +
+                    new Date().getFullYear() + ' IROIRO, LLC. All rights reserved.</p></div>';
+            });
+    }
+
+    // Helper function to fetch footer with a promise
+    function fetchFooter(path) {
+        return fetch(path)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Footer not found at ' + path);
+                }
+                return response.text();
+            })
             .then(data => {
                 footer.innerHTML = data;
+                // Update year in footer
                 const yearSpan = footer.querySelector('#current-year');
                 if (yearSpan && !yearSpan.textContent) {
                     yearSpan.textContent = new Date().getFullYear();
                 }
-            })
-            .catch(error => console.error('Error loading footer:', error));
-    }
-
-    // Add active state to current nav button
-    try { // Added try...catch for robustness
-        const currentPagePath = window.location.pathname;
-        const navButtons = document.querySelectorAll('.overlay-nav .nav-button');
-
-        navButtons.forEach(button => {
-            const buttonHref = button.getAttribute('href');
-            let isCurrent = false;
-
-            // Check for exact match or root path match for index
-            if (buttonHref === currentPagePath ||
-               (currentPagePath === '/' || currentPagePath.endsWith('/index.html')) && (buttonHref === '/' || buttonHref === './' || buttonHref === 'index.html'))
-            {
-                 isCurrent = true;
-            }
-            // More robust check: compare cleaned paths
-            // const cleanCurrent = currentPagePath.replace(/index\.html$/, '').replace(/\/$/, '');
-            // const cleanButton = buttonHref.replace(/index\.html$/, '').replace(/\/$/, '');
-            // if (cleanCurrent === cleanButton) {
-            //     isCurrent = true;
-            // }
-
-
-            if (isCurrent) {
-                button.classList.add('current');
-            } else {
-                 button.classList.remove('current'); // Ensure others aren't marked current
-            }
-        });
-    } catch (e) {
-         console.error("Error setting active nav link:", e);
+                return data; // Return for chaining
+            });
     }
 });

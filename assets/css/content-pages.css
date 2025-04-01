@@ -1,5 +1,17 @@
 /* Additional styles for content pages */
 
+/* Main scrollbar styling - hide scrollbars for content pages */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Firefox - hide scrollbars */
+html, body {
+    scrollbar-width: none;
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
 /* Main Content Structure */
 body {
     overflow-x: hidden;
@@ -18,9 +30,9 @@ main {
     padding: 20px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Changed from center to allow content to extend */
     background-color: transparent;
-    min-height: calc(100vh - 120px);
+    min-height: auto; /* Remove fixed height constraint */
 }
 
 .content-container {
@@ -35,7 +47,9 @@ main {
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     margin: 20px auto;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    /* No overflow settings to allow natural page flow */
+    /* Remove any height constraints or overflow properties */
+    max-height: none;
+    overflow: visible;
 }
 
 /* Header style to match index page */
