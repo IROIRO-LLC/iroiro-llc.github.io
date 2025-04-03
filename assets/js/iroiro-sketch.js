@@ -12,6 +12,11 @@ let driftSpeed = 0.1; // How fast particles naturally drift
 let maxSpeed = 1.5; // Max speed of particle movement
 // --- End Controls ---
 
+// Add tracking variables for window size changes
+let lastWidth = 0;
+let lastHeight = 0;
+const RESIZE_THRESHOLD = 100; // Only significant size changes trigger reinitialization
+
 let imgLoaded = false;
 let targetWidth, targetHeight; // Dimensions to scale image to fit canvas
 let isMobile = false;
@@ -52,6 +57,10 @@ function setup() {
     noStroke();
     ellipseMode(CENTER); // Keep this if using ellipse() for particles
     frameRate(30); // Keep or adjust as needed
+
+    // Initialize lastWidth and lastHeight
+    lastWidth = windowWidth;
+    lastHeight = windowHeight;
 
     if (imgLoaded) {
         initializeParticles();
@@ -139,7 +148,17 @@ function windowResized() {
     const wasIsMobile = isMobile;
     isMobile = window.innerWidth <= 768;
 
-    // If device type changed, reload the appropriate image
+    // Calculate size difference
+    const widthDiff = Math.abs(windowWidth - lastWidth);
+    const heightDiff = Math.abs(windowHeight - lastHeight);
+
+    // Always resize the canvas
+    resizeCanvas(windowWidth, windowHeight);
+
+    // Only reinitialize particles if:
+    // 1. Device type changed (mobile/desktop switch)
+    // 2. OR significant size change (not just address bar)
+    // 3. AND image is loaded
     if (wasIsMobile !== isMobile) {
         const imgPath = isMobile ? '/assets/images/background_mobile.png' : '/assets/images/background.jpg';
         console.log(`Device type changed. Loading ${imgPath}`);
@@ -147,14 +166,18 @@ function windowResized() {
             imgLoaded = true;
             resizeCanvas(windowWidth, windowHeight);
             initializeParticles();
+            lastWidth = windowWidth;
+            lastHeight = windowHeight;
         }, onImageError);
-    } else {
-        // Just resize and reinitialize with existing image
-        resizeCanvas(windowWidth, windowHeight);
-        if (imgLoaded) {
-            initializeParticles();
-        }
+    } else if ((widthDiff > RESIZE_THRESHOLD || (heightDiff > RESIZE_THRESHOLD && widthDiff > 0)) && imgLoaded) {
+        // Only reinitialize for significant size changes
+        // Minor height-only changes (like address bar appearing) won't trigger reinit
+        initializeParticles();
     }
+
+    // Update last dimensions regardless
+    lastWidth = windowWidth;
+    lastHeight = windowHeight;
 }
 
 // --- Particle Class ---

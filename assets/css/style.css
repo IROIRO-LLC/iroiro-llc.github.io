@@ -647,13 +647,15 @@ strong {
         gap: 0.5rem;
     }
 
+    /* Position nav dots centered between content edge and screen edge */
     .nav-dots {
-        right: 15px;
-        gap: 15px;
+        /* Content is 95% wide, so 2.5% space on right side - position dots in center of that space */
+        right: 1.25%; /* Half of the remaining 2.5% space */
+        gap: 12px;
     }
     .nav-dot {
-        width: 10px;
-        height: 10px;
+        width: 8px;
+        height: 8px;
     }
     /* Ensure main uses padding-top if that's the chosen method */
     main { padding-top: 100vh; }
@@ -667,11 +669,45 @@ strong {
     .title-logo { height: 24px; }
     .overlay-nav a.nav-button { padding: 6px 14px; font-size: 0.8rem; }
 
-    .content-card { border-radius: 20px; }
+    .content-card {
+        border-radius: 20px;
+        width: 92%; /* Slightly reduced width */
+    }
     .card-logo { max-width: 100px; } /* Further reduce logo size */
     .store-badge { height: 35px; }
 
     .hero-content-section {
         padding: 40px 15px; /* Adjust padding */
+    }
+
+    /* Position nav dots centered between content edge and screen edge */
+    .nav-dots {
+        /* Content is 92% wide, so 4% space on right side - position dots in center of that space */
+        right: 2%; /* Half of the remaining 4% space */
+        gap: 10px;
+    }
+
+    .nav-dot {
+        width: 6px;
+        height: 6px;
+    }
+}
+
+/* Add specific handling for very narrow screens */
+@media (max-width: 360px) {
+    .content-card {
+        width: 90%; /* Further reduce width to create more space */
+    }
+
+    /* Position nav dots centered between content edge and screen edge */
+    .nav-dots {
+        /* Content is 90% wide, so 5% space on right side - position dots in center of that space */
+        right: 2.5%; /* Half of the remaining 5% space */
+        gap: 8px;
+    }
+
+    .nav-dot {
+        width: 5px;
+        height: 5px;
     }
 }
