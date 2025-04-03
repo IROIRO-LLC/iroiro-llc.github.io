@@ -13,11 +13,6 @@ html, body {
 }
 
 /* Main Content Structure */
-body {
-    overflow-x: hidden;
-    background-color: transparent;
-}
-
 /* Optional: If the header itself doesn't quite fill the space, adjust main padding */
 main {
     min-height: 100vh;
