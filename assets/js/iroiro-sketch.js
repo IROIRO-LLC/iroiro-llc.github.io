@@ -1,4 +1,4 @@
-// assets/js/iroiro-sketch.js
+// assets/js/iroiro-sketch.js - Modified to handle responsive background images
 
 let img;
 let particles = [];
@@ -14,14 +14,22 @@ let maxSpeed = 1.5; // Max speed of particle movement
 
 let imgLoaded = false;
 let targetWidth, targetHeight; // Dimensions to scale image to fit canvas
+let isMobile = false;
 
 function preload() {
-    // Make sure this path is correct!
-    img = loadImage('/assets/images/background.jpg', onImageLoaded, onImageError);
+    // Check if device is mobile
+    isMobile = window.innerWidth <= 768;
+
+    // Choose appropriate background image based on device
+    const imgPath = isMobile ? '/assets/images/background_mobile.png' : '/assets/images/background.jpg';
+    console.log(`Loading ${imgPath} for ${isMobile ? 'mobile' : 'desktop'} device`);
+
+    // Load the selected image
+    img = loadImage(imgPath, onImageLoaded, onImageError);
 }
 
 function onImageLoaded() {
-    console.log("Background image loaded successfully.");
+    console.log(`Background image loaded successfully. Size: ${img.width}x${img.height}`);
     imgLoaded = true;
     // We'll initialize particles in setup after canvas is created
 }
@@ -56,16 +64,15 @@ function initializeParticles() {
     particles = []; // Clear existing particles if any (e.g., on resize)
     if (!img || !img.width || !img.height) return; // Need a valid image
 
-    // Calculate scaling to fit image within canvas while maintaining aspect ratio
-    let imgAspect = img.width / img.height;
-    let canvasAspect = width / height;
+    // Calculate scaling to ensure image width fits viewport
+    // This now ensures the image always fits width-wise
+    targetWidth = width;
+    targetHeight = (width / img.width) * img.height;
 
-    if (imgAspect > canvasAspect) { // Image wider than canvas
-        targetWidth = width;
-        targetHeight = width / imgAspect;
-    } else { // Image taller than canvas (or same aspect)
+    // If the scaled height is less than canvas height, scale by height instead
+    if (targetHeight < height) {
         targetHeight = height;
-        targetWidth = height * imgAspect;
+        targetWidth = (height / img.height) * img.width;
     }
 
     // Center the scaled image coords
@@ -82,12 +89,15 @@ function initializeParticles() {
     console.log(`Image Original: ${img.width}x${img.height}, Scaled Target: ${targetWidth}x${targetHeight}`);
     console.log(`Canvas Size: ${width}x${height}`);
 
-    for (let y = 0; y < img.height; y += skipRate) {
-        for (let x = 0; x < img.width; x += skipRate) {
+    // Adjust skip rate based on device to maintain performance
+    const effectiveSkipRate = isMobile ? skipRate * 2 : skipRate;
+
+    for (let y = 0; y < img.height; y += effectiveSkipRate) {
+        for (let x = 0; x < img.width; x += effectiveSkipRate) {
             let index = (x + y * img.width) * 4; // Pixel index (RGBA)
 
             // Check if pixel data exists at this index
-             if (index + 3 >= img.pixels.length) continue; // Avoid accessing out of bounds
+            if (index + 3 >= img.pixels.length) continue; // Avoid accessing out of bounds
 
             let r = img.pixels[index];
             let g = img.pixels[index + 1];
@@ -106,8 +116,10 @@ function initializeParticles() {
     }
     console.log(`Created ${particles.length} particles.`);
     img.updatePixels(); // Good practice, though maybe not strictly needed here
-}
 
+    // Make the initializeParticles function globally available for the navDots.js script
+    window.initializeParticles = initializeParticles;
+}
 
 function draw() {
     // Use a slightly transparent background for subtle trails/blur
@@ -123,10 +135,25 @@ function draw() {
 }
 
 function windowResized() {
-    resizeCanvas(windowWidth, windowHeight);
-    if (imgLoaded) {
-        // Re-calculate particle positions based on new window size
-        initializeParticles();
+    // Check if device type changed (e.g., rotation from portrait to landscape)
+    const wasIsMobile = isMobile;
+    isMobile = window.innerWidth <= 768;
+
+    // If device type changed, reload the appropriate image
+    if (wasIsMobile !== isMobile) {
+        const imgPath = isMobile ? '/assets/images/background_mobile.png' : '/assets/images/background.jpg';
+        console.log(`Device type changed. Loading ${imgPath}`);
+        img = loadImage(imgPath, () => {
+            imgLoaded = true;
+            resizeCanvas(windowWidth, windowHeight);
+            initializeParticles();
+        }, onImageError);
+    } else {
+        // Just resize and reinitialize with existing image
+        resizeCanvas(windowWidth, windowHeight);
+        if (imgLoaded) {
+            initializeParticles();
+        }
     }
 }
 
