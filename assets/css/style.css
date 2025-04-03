@@ -166,6 +166,16 @@ strong {
     border-color: rgba(255, 255, 255, 0.8);
 }
 
+/* Styling for the refresh icon button */
+.refresh-icon {
+    vertical-align: middle;
+    margin: 0;
+    transition: transform 0.3s ease;
+}
+
+#reset-particles:hover .refresh-icon {
+    transform: rotate(180deg);
+}
 
 /* --- Content Sections (Below the Fold) --- */
 

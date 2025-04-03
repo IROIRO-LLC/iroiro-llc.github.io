@@ -27,6 +27,12 @@
         <nav class="overlay-nav">
             <a href="/index.html" class="nav-button current">Home</a>
             <a href="pages/contact.html" class="nav-button">Contact</a>
+            <a href="#" class="nav-button" id="reset-particles" aria-label="Reset Particles">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="refresh-icon">
+                    <path d="M21.5 2v6h-6"></path>
+                    <path d="M21.34 15.57a10 10 0 1 1-.57-8.38"></path>
+                </svg>
+            </a>
         </nav>
     </div>
 </header>
@@ -76,7 +82,25 @@
 <script src="/assets/js/iroiro-sketch.js"></script>
 <script src="/assets/js/loadHeaderAndFooter.js"></script>
 <script src="/assets/js/observeSections.js"></script>
-<script src="/assets/js/navDots.js"></script> <!-- Navigation Dot Script -->
+<script src="/assets/js/navDots.js"></script>
+
+<!-- Particle Refresh Custom Scripts -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const resetButton = document.getElementById('reset-particles');
+        if (resetButton) {
+            resetButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (typeof window.initializeParticles === 'function') {
+                    console.log("Resetting particles via button click...");
+                    window.initializeParticles();
+                } else {
+                    console.warn("initializeParticles function not found on window.");
+                }
+            });
+        }
+    });
+</script>
 
 </body>
 </html>

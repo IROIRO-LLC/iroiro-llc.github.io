@@ -1,4 +1,4 @@
-// assets/js/navDots.js
+// assets/js/navDots.js - Modified to remove particle reset from top dot
 
 document.addEventListener("DOMContentLoaded", () => {
     const dots = document.querySelectorAll(".nav-dot");
@@ -23,14 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     top: 0,
                     behavior: "smooth"
                 });
-                // --- CALL RESET FUNCTION HERE ---
-                if (typeof window.initializeParticles === 'function') {
-                    console.log("Resetting particles via top dot click...");
-                    window.initializeParticles(); // Call the global function
-                } else {
-                    console.warn("initializeParticles function not found on window.");
-                }
-                // --- END OF CALL ---
+                // Removed particle reset functionality from here
             } else if (target === "content") {
                  window.scrollTo({
                      top: window.innerHeight,
