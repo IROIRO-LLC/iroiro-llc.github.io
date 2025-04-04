@@ -10,6 +10,9 @@ let pushForce = 0.8; // How strongly mouse pushes particles
 let returnForce = 0.02; // How strongly particles return to origin
 let driftSpeed = 0.1; // How fast particles naturally drift
 let maxSpeed = 1.5; // Max speed of particle movement
+// --- New Time Controls ---
+let startupDelay = 5; // Seconds before drift begins
+let startTime; // Will hold the timestamp when particles are initialized
 // --- End Controls ---
 
 // Add tracking variables for window size changes
@@ -72,6 +75,9 @@ function setup() {
 function initializeParticles() {
     particles = []; // Clear existing particles if any (e.g., on resize)
     if (!img || !img.width || !img.height) return; // Need a valid image
+
+    // Set the start time for the drift delay effect
+    startTime = millis();
 
     // Calculate scaling to ensure image width fits viewport
     // This now ensures the image always fits width-wise
@@ -136,8 +142,11 @@ function draw() {
 
     let mouseVec = createVector(mouseX, mouseY);
 
+    // Check if startup delay has passed
+    let shouldDrift = (millis() - startTime) / 1000 > startupDelay;
+
     for (let i = 0; i < particles.length; i++) {
-        particles[i].applyForces(mouseVec);
+        particles[i].applyForces(mouseVec, shouldDrift);
         particles[i].update();
         particles[i].display();
     }
@@ -200,7 +209,7 @@ class Particle {
         this.acc.add(force);
     }
 
-    applyForces(mouse) {
+    applyForces(mouse, shouldDrift) {
         // 1. Return Force (Steering towards origin)
         let seek = p5.Vector.sub(this.origin, this.pos); // Desired vector
         let distToOrigin = seek.mag();
@@ -220,11 +229,13 @@ class Particle {
             this.applyForce(repel);
         }
 
-        // 3. Subtle Drift Force (Perlin Noise)
-        let angle = noise(this.pos.x * 0.005, this.pos.y * 0.005, frameCount * 0.001 + this.noiseOffset.x) * TWO_PI * 2;
-        let drift = p5.Vector.fromAngle(angle);
-        drift.setMag(driftSpeed);
-        this.applyForce(drift);
+        // 3. Subtle Drift Force (Perlin Noise) - only applied after delay
+        if (shouldDrift) {
+            let angle = noise(this.pos.x * 0.005, this.pos.y * 0.005, frameCount * 0.001 + this.noiseOffset.x) * TWO_PI * 2;
+            let drift = p5.Vector.fromAngle(angle);
+            drift.setMag(driftSpeed);
+            this.applyForce(drift);
+        }
     }
 
     update() {
