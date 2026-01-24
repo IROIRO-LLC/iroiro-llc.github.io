@@ -29,7 +29,7 @@ function preload() {
     isMobile = window.innerWidth <= 768;
 
     // Choose appropriate background image based on device
-    const imgPath = isMobile ? '/assets/images/background_mobile.png' : '/assets/images/background.jpg';
+    const imgPath = isMobile ? 'https://iroiro.us/assets/images/background_mobile.png' : 'https://iroiro.us/assets/images/background.jpg';
     console.log(`Loading ${imgPath} for ${isMobile ? 'mobile' : 'desktop'} device`);
 
     // Load the selected image
@@ -169,7 +169,7 @@ function windowResized() {
     // 2. OR significant size change (not just address bar)
     // 3. AND image is loaded
     if (wasIsMobile !== isMobile) {
-        const imgPath = isMobile ? '/assets/images/background_mobile.png' : '/assets/images/background.jpg';
+        const imgPath = isMobile ? 'https://iroiro.us/assets/images/background_mobile.png' : 'https://iroiro.us/assets/images/background.jpg';
         console.log(`Device type changed. Loading ${imgPath}`);
         img = loadImage(imgPath, () => {
             imgLoaded = true;

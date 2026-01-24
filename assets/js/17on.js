@@ -19,6 +19,11 @@ function initTypewriterEffect() {
     const lines = document.querySelectorAll('.haiku-line');
     if (lines.length === 0) return;
 
+    // Hide all cursors except the first one initially
+    document.querySelectorAll('.cursor').forEach((c, i) => {
+        c.style.display = i === 0 ? 'inline-block' : 'none';
+    });
+
     let currentLine = 0;
     let currentChar = 0;
     let isDeleting = false;
