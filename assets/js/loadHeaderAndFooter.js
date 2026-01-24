@@ -3,15 +3,16 @@ document.addEventListener("DOMContentLoaded", function() {
     const footer = document.getElementById('footer');
 
     if (footer) {
-        // Try absolute path first, then fall back to relative path if that fails
-        fetchFooter('/footer.html')
+        // Try absolute URL first (required for subdomains like 17on.iroiro.us),
+        // then fall back to relative paths for local development
+        fetchFooter('https://iroiro.us/footer.html')
             .catch(error => {
-                console.log("Could not load footer from absolute path, trying relative path...");
-                return fetchFooter('../footer.html');
+                console.log("Could not load footer from absolute URL, trying relative path...");
+                return fetchFooter('/footer.html');
             })
             .catch(error => {
-                console.log("Could not load footer from relative path, trying alternate path...");
-                return fetchFooter('footer.html');
+                console.log("Could not load footer from root path, trying parent path...");
+                return fetchFooter('../footer.html');
             })
             .catch(error => {
                 console.error("All attempts to load footer failed:", error);
