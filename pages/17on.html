@@ -3,38 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="17on - IROIRO">
-    <meta name="theme-color" content="#000000">
+    <meta name="description" content="17on - Capture life in three lines. A beautiful haiku journaling app with intelligent syllable counting, on-device AI, and collectible stationery.">
+    <meta name="theme-color" content="#ac0dc9">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://17on.iroiro.us/">
-    <meta property="og:title" content="17on - IROIRO">
-    <meta property="og:description" content="17on - IROIRO">
-    <meta property="og:image" content="https://iroiro.us/assets/images/background.jpg">
+    <meta property="og:title" content="17on - Capture Life in Three Lines">
+    <meta property="og:description" content="A beautiful haiku journaling app with intelligent syllable counting, on-device AI, and collectible stationery.">
+    <meta property="og:image" content="https://iroiro.us/assets/images/17on/app_icon.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://17on.iroiro.us/">
-    <meta property="twitter:title" content="17on - IROIRO">
-    <meta property="twitter:description" content="17on - IROIRO">
-    <meta property="twitter:image" content="https://iroiro.us/assets/images/background.jpg">
+    <meta property="twitter:title" content="17on - Capture Life in Three Lines">
+    <meta property="twitter:description" content="A beautiful haiku journaling app with intelligent syllable counting, on-device AI, and collectible stationery.">
+    <meta property="twitter:image" content="https://iroiro.us/assets/images/17on/app_icon.png">
 
-    <title>17on - IROIRO</title>
+    <title>17on - Capture Life in Three Lines</title>
     <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="icon" href="/assets/images/logo.png" type="image/png">
+    <link rel="stylesheet" href="/assets/css/17on.css">
+    <link rel="icon" href="/assets/images/17on/app_icon.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body id="top">
+<body id="top" class="landing-page">
 
 <!-- Overlay Header Elements -->
 <header class="overlay-header">
     <div class="container">
         <div class="main-title">
-            <img src="/assets/images/logo.png" alt="IROIRO small logo" class="title-logo">
-            17on
+            <img src="/assets/images/17on/app_icon.png" alt="17on app icon" class="title-logo">
+            17<span class="on-accent">on</span>
         </div>
         <nav class="overlay-nav">
             <a href="https://iroiro.us" class="nav-button">IROIRO Home</a>
@@ -45,19 +46,261 @@
 
 <!-- Main content -->
 <main>
-    <section id="content-start" class="hero-content-section observe-me">
-        <div class="content-card">
-            <div class="card-content-wrapper">
-                <div class="card-text">
-                    <h2>17on</h2>
-                    <p>
-                        Welcome to 17on. This is a placeholder page - customize this content as needed.
-                    </p>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <img src="/assets/images/17on/app_icon.png" alt="17on App Icon" class="app-icon-large">
+            <h1 class="hero-tagline">Capture life in three lines</h1>
+
+            <!-- Animated Haiku Demo -->
+            <div class="haiku-demo">
+                <div class="haiku-line">
+                    <span class="haiku-text"></span>
+                    <span class="cursor"></span>
+                    <span class="syllable-count"></span>
                 </div>
-                <div class="card-logo">
-                    <img src="/assets/images/logo.png" alt="IROIRO Logo">
+                <div class="haiku-line">
+                    <span class="haiku-text"></span>
+                    <span class="cursor"></span>
+                    <span class="syllable-count"></span>
+                </div>
+                <div class="haiku-line">
+                    <span class="haiku-text"></span>
+                    <span class="cursor"></span>
+                    <span class="syllable-count"></span>
                 </div>
             </div>
+
+            <div class="hero-badges">
+                <a href="https://apps.apple.com/us/developer/iroiro-llc/id1435048158" target="_blank" rel="noopener noreferrer">
+                    <img src="/assets/images/appstore.png" alt="Download on the App Store" class="store-badge">
+                </a>
+                <a href="https://play.google.com/store/apps/dev?id=6528214586264150108" target="_blank" rel="noopener noreferrer">
+                    <img src="/assets/images/googleplay.png" alt="Get it on Google Play" class="store-badge">
+                </a>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <span>Scroll to explore</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14M5 12l7 7 7-7"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="landing-section observe-me">
+        <div class="container">
+            <h2 class="section-title">Everything you need to write haiku</h2>
+            <div class="features-grid">
+                <div class="feature-card observe-me">
+                    <div class="feature-icon">📖</div>
+                    <h3>Intelligent Syllable Counting</h3>
+                    <p>Our <span class="feature-highlight">126,000+ word dictionary</span> counts syllables as you type, helping you craft perfect haiku every time.</p>
+                </div>
+                <div class="feature-card observe-me">
+                    <div class="feature-icon">📔</div>
+                    <h3>Personal Haiku Journal</h3>
+                    <p>Save unlimited haiku and search by keywords, dates, or tags. Your creative journey, organized beautifully.</p>
+                </div>
+                <div class="feature-card observe-me">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Beautiful Sharing</h3>
+                    <p>Share your haiku on customizable stationery with unique paper textures, inks, and handwriting styles.</p>
+                </div>
+                <div class="feature-card observe-me">
+                    <div class="feature-icon">🔒</div>
+                    <h3>On-Device AI</h3>
+                    <p>Privacy-first AI assistance that <span class="feature-highlight">never uploads your writing</span>. Get inspiration without compromising your creativity.</p>
+                </div>
+                <div class="feature-card observe-me">
+                    <div class="feature-icon">🌸</div>
+                    <h3>Inspiration Feed</h3>
+                    <p>Discover classic haiku from masters like Basho, Issa, Buson, and Shiki. Learn from centuries of tradition.</p>
+                </div>
+                <div class="feature-card observe-me">
+                    <div class="feature-icon">✨</div>
+                    <h3>Collectible System</h3>
+                    <p>Unlock rare papers, pens, and inks through our gacha system. Make every haiku uniquely yours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Composition Styles Section -->
+    <section id="styles" class="landing-section observe-me">
+        <div class="container">
+            <h2 class="section-title">Five ways to write haiku</h2>
+            <div class="styles-tabs">
+                <button class="style-tab active" data-style="traditional">Traditional</button>
+                <button class="style-tab" data-style="modern">Modern</button>
+                <button class="style-tab" data-style="lune">Lune</button>
+                <button class="style-tab" data-style="monoku">Monoku</button>
+                <button class="style-tab" data-style="freeform">Freeform</button>
+            </div>
+            <div class="style-content">
+                <div class="style-panel active" data-style="traditional">
+                    <h3>Traditional Haiku</h3>
+                    <p class="style-structure">5 - 7 - 5 syllables</p>
+                    <div class="style-example">
+                        <p>An old silent pond</p>
+                        <p>A frog jumps into the pond</p>
+                        <p>Splash! Silence again</p>
+                    </div>
+                    <p class="style-attribution">- Matsuo Basho</p>
+                </div>
+                <div class="style-panel" data-style="modern">
+                    <h3>Modern Haiku</h3>
+                    <p class="style-structure">4 - 4 - 6 syllables</p>
+                    <div class="style-example">
+                        <p>Autumn moonlight</p>
+                        <p>a worm digs silently</p>
+                        <p>into the chestnut</p>
+                    </div>
+                    <p class="style-attribution">- Matsuo Basho (adapted)</p>
+                </div>
+                <div class="style-panel" data-style="lune">
+                    <h3>American Lune</h3>
+                    <p class="style-structure">3 - 5 - 3 words</p>
+                    <div class="style-example">
+                        <p>Red leaves fall</p>
+                        <p>silently onto the cold ground</p>
+                        <p>autumn speaks softly</p>
+                    </div>
+                    <p class="style-attribution">- Contemporary style</p>
+                </div>
+                <div class="style-panel" data-style="monoku">
+                    <h3>Monoku</h3>
+                    <p class="style-structure">Single line, ~17 syllables</p>
+                    <div class="style-example">
+                        <p>the longer you gaze at the moon the deeper the silence grows</p>
+                    </div>
+                    <p class="style-attribution">- Contemporary style</p>
+                </div>
+                <div class="style-panel" data-style="freeform">
+                    <h3>Freeform</h3>
+                    <p class="style-structure">No rules, pure expression</p>
+                    <div class="style-example">
+                        <p>Morning coffee steam</p>
+                        <p>curls like questions</p>
+                        <p>I don't need to answer</p>
+                    </div>
+                    <p class="style-attribution">- Write your way</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collectibles Section -->
+    <section id="collectibles" class="landing-section observe-me">
+        <div class="container">
+            <h2 class="section-title">Collect beautiful stationery</h2>
+            <div class="collectibles-preview">
+                <div class="stationery-samples">
+                    <div class="stationery-card stationery-dawn">Dawn</div>
+                    <div class="stationery-card stationery-noon">Noon</div>
+                    <div class="stationery-card stationery-dusk">Dusk</div>
+                    <div class="stationery-card stationery-night">Night</div>
+                </div>
+                <div class="collectibles-info">
+                    <h3>The Stationery Gacha</h3>
+                    <p class="collectibles-description">Draw from the stationery gacha as many times as you want—<strong>unlimited pulls, always free</strong>. Discover papers inspired by moments in nature, from the soft pastels of dawn to the deep indigos of midnight.</p>
+                    <p class="collectibles-description">Build your collection and watch your stationery box grow. Mix and match papers with different ink colors to create the perfect canvas for each haiku. Your collection is saved forever, so keep pulling until you have them all.</p>
+                    <div class="collection-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">24</span>
+                            <span class="stat-label">Unique Papers</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">12</span>
+                            <span class="stat-label">Ink Colors</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">6</span>
+                            <span class="stat-label">Writing Styles</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="landing-section observe-me">
+        <div class="container">
+            <h2 class="section-title">Simple pricing</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Free</h3>
+                    <p class="pricing-price">$0</p>
+                    <ul class="pricing-features">
+                        <li>Save up to 25 haikus in your journal</li>
+                        <li>Traditional & Modern styles</li>
+                        <li>Full syllable dictionary</li>
+                        <li>Share with stationery</li>
+                        <li>Unlimited gacha pulls</li>
+                    </ul>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>Premium</h3>
+                    <p class="pricing-price">$4.99 <span>one-time</span></p>
+                    <ul class="pricing-features">
+                        <li>Save unlimited haikus in your journal</li>
+                        <li>All 5 composition styles with more to come</li>
+                        <li>Cloud sync <span class="coming-soon">Coming Soon</span></li>
+                        <li>All future features included</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feedback Section -->
+    <section id="feedback" class="landing-section feedback-section observe-me">
+        <div class="container">
+            <h2 class="section-title">Share your thoughts</h2>
+            <div class="feedback-container">
+                <p class="feedback-intro">Have a feature request, found a bug, or just want to say hello? We'd love to hear from you.</p>
+                <form id="feedback-form" class="feedback-form">
+                    <div class="form-group">
+                        <label for="feedback-type">Type</label>
+                        <select id="feedback-type" required>
+                            <option value="">Select type...</option>
+                            <option value="feedback">General Feedback</option>
+                            <option value="enhancement">Feature Request</option>
+                            <option value="bug">Bug Report</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="feedback-subject">Subject</label>
+                        <input type="text" id="feedback-subject" placeholder="Brief summary..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="feedback-description">Description</label>
+                        <textarea id="feedback-description" placeholder="Tell us more..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="feedback-email">Email <span class="optional">(optional, for follow-up)</span></label>
+                        <input type="email" id="feedback-email" placeholder="your@email.com">
+                    </div>
+                    <button type="submit" class="submit-btn">Send Feedback</button>
+                    <div class="form-message"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="landing-section final-cta observe-me">
+        <h2 class="final-tagline">Start your haiku journey today</h2>
+        <div class="final-badges">
+            <a href="https://apps.apple.com/us/developer/iroiro-llc/id1435048158" target="_blank" rel="noopener noreferrer">
+                <img src="/assets/images/appstore.png" alt="Download on the App Store" class="store-badge">
+            </a>
+            <a href="https://play.google.com/store/apps/dev?id=6528214586264150108" target="_blank" rel="noopener noreferrer">
+                <img src="/assets/images/googleplay.png" alt="Get it on Google Play" class="store-badge">
+            </a>
         </div>
     </section>
 
@@ -68,7 +311,11 @@
 <!-- Navigation Dots -->
 <nav class="nav-dots">
     <a href="#top" class="nav-dot active" data-target="top" aria-label="Scroll to top"></a>
-    <a href="#content-start" class="nav-dot" data-target="content" aria-label="Scroll to content"></a>
+    <a href="#features" class="nav-dot" data-target="features" aria-label="Scroll to features"></a>
+    <a href="#styles" class="nav-dot" data-target="styles" aria-label="Scroll to styles"></a>
+    <a href="#collectibles" class="nav-dot" data-target="collectibles" aria-label="Scroll to collectibles"></a>
+    <a href="#pricing" class="nav-dot" data-target="pricing" aria-label="Scroll to pricing"></a>
+    <a href="#feedback" class="nav-dot" data-target="feedback" aria-label="Scroll to feedback"></a>
 </nav>
 
 <!-- Load p5.js -->
@@ -79,6 +326,7 @@
 <script src="/assets/js/loadHeaderAndFooter.js"></script>
 <script src="/assets/js/observeSections.js"></script>
 <script src="/assets/js/navDots.js"></script>
+<script src="/assets/js/17on.js"></script>
 
 </body>
 </html>
