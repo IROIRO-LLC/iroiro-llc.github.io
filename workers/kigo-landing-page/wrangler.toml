@@ -1,0 +1,7 @@
+name = "kigo-landing-page"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+routes = [
+  { pattern = "17on.iroiro.us/*", zone_name = "iroiro.us" }
+]
