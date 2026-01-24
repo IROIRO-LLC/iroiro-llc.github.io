@@ -2,6 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- Subdomain routing -->
+    <script>
+        (function() {
+            var host = window.location.hostname;
+            if (host === '17on.iroiro.us') {
+                window.location.replace('/pages/17on.html');
+            }
+        })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="IROIRO - Beautiful everyday life solutions. Experience our dynamic and interactive world.">
     <meta name="theme-color" content="#000000">
