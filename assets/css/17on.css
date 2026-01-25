@@ -698,8 +698,13 @@ body.landing-page main {
 
     .haiku-line {
         font-size: 1.1rem;
-        flex-direction: column;
+        flex-wrap: wrap;
         gap: 5px;
+    }
+
+    .haiku-line .syllable-count {
+        width: 100%;
+        text-align: center;
     }
 }
 
