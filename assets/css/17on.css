@@ -144,7 +144,7 @@ body.landing-page main {
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    color: rgba(255, 255, 255, 0.5);
+    color: #ffffff;
     font-size: 0.8rem;
     animation: bounce 2s infinite;
 }
@@ -152,7 +152,7 @@ body.landing-page main {
 .scroll-indicator svg {
     width: 24px;
     height: 24px;
-    stroke: rgba(255, 255, 255, 0.5);
+    stroke: #ffffff;
 }
 
 @keyframes bounce {
