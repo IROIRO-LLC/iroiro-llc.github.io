@@ -736,9 +736,11 @@ body.landing-page main {
     }
 
     .hero-badges {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
+        gap: 10px;
+    }
+
+    .hero-badges .store-badge {
+        height: 38px;
     }
 
     .feature-card {
