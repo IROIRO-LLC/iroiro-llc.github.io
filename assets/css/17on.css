@@ -712,11 +712,14 @@ body.landing-page main {
         font-size: 1.1rem;
         flex-wrap: wrap;
         gap: 5px;
+        min-height: 3.5em;
+        align-content: center;
     }
 
     .haiku-line .syllable-count {
         width: 100%;
         text-align: center;
+        min-height: 1.3em;
     }
 }
 
