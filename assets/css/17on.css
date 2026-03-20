@@ -24,13 +24,14 @@ body.landing-page main {
 
 /* Hero Section */
 .hero-section {
-    height: 100vh;
+    min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 80px 20px 80px;
+    padding: clamp(70px, 10vw, 80px) clamp(15px, 4vw, 20px) clamp(60px, 8vw, 80px);
     position: relative;
     z-index: 2;
     overflow: hidden;
@@ -38,44 +39,44 @@ body.landing-page main {
 }
 
 .hero-content {
-    max-width: 800px;
+    max-width: min(800px, 90%);
     margin: 0 auto;
 }
 
 .app-icon-large {
-    width: 120px;
-    height: 120px;
-    border-radius: 28px;
-    margin: 0 auto 20px auto;
+    width: clamp(80px, 12vw, 120px);
+    height: clamp(80px, 12vw, 120px);
+    border-radius: clamp(20px, 3vw, 28px);
+    margin: 0 auto clamp(15px, 2.5vw, 20px) auto;
     display: block;
     box-shadow: 0 20px 60px rgba(172, 13, 201, 0.3);
 }
 
 .hero-tagline {
-    font-size: 2.2rem;
+    font-size: clamp(1.4rem, 1rem + 2vw, 2.2rem);
     font-weight: 700;
-    margin-bottom: 25px;
+    margin-bottom: clamp(18px, 3vw, 25px);
     color: var(--17on-text);
 }
 
 /* Animated Haiku Example */
 .haiku-demo {
     background: rgba(0, 0, 0, 0.85);
-    border-radius: 20px;
-    padding: 25px 40px;
-    margin-bottom: 25px;
+    border-radius: clamp(14px, 2vw, 20px);
+    padding: clamp(15px, 3vw, 25px) clamp(15px, 4vw, 40px);
+    margin-bottom: clamp(18px, 3vw, 25px);
     border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .haiku-line {
-    font-size: 1.4rem;
+    font-size: clamp(1rem, 0.8rem + 0.8vw, 1.4rem);
     font-weight: 300;
-    margin: 15px 0;
+    margin: clamp(8px, 1.5vw, 15px) 0;
     min-height: 2em;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: clamp(8px, 1.5vw, 15px);
 }
 
 .haiku-text {
@@ -84,7 +85,7 @@ body.landing-page main {
 }
 
 .syllable-count {
-    font-size: 0.9rem;
+    font-size: var(--font-size-sm, clamp(0.8rem, 0.75rem + 0.15vw, 0.9rem));
     color: var(--17on-purple);
     font-weight: 600;
     opacity: 0;
@@ -111,10 +112,10 @@ body.landing-page main {
 
 /* Beta Title */
 .beta-title {
-    font-size: 1.3rem;
+    font-size: clamp(1rem, 0.85rem + 0.4vw, 1.3rem);
     font-weight: 600;
     color: var(--17on-mint);
-    margin-bottom: 20px;
+    margin-bottom: clamp(15px, 2.5vw, 20px);
     text-transform: uppercase;
     letter-spacing: 0.1em;
 }
@@ -123,12 +124,13 @@ body.landing-page main {
 .hero-badges {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: clamp(10px, 2vw, 20px);
     margin-bottom: 0;
 }
 
 .hero-badges .store-badge {
-    height: 50px;
+    height: clamp(38px, 5vw, 50px);
     transition: transform 0.2s ease;
 }
 
@@ -139,7 +141,7 @@ body.landing-page main {
 /* Scroll Indicator */
 .scroll-indicator {
     position: absolute;
-    bottom: 40px;
+    bottom: clamp(20px, 4vw, 40px);
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -165,7 +167,7 @@ body.landing-page main {
 
 /* Landing Sections */
 .landing-section {
-    padding: 100px 20px;
+    padding: clamp(50px, 8vw, 100px) clamp(15px, 4vw, 20px);
     background-color: var(--17on-bg);
     position: relative;
     z-index: 2;
@@ -177,24 +179,24 @@ body.landing-page main {
 }
 
 .section-title {
-    font-size: 2rem;
+    font-size: clamp(1.4rem, 1.1rem + 1vw, 2rem);
     font-weight: 700;
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: clamp(30px, 5vw, 60px);
     color: var(--17on-text);
 }
 
 /* Features Grid */
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+    gap: clamp(15px, 3vw, 30px);
 }
 
 .feature-card {
     background-color: var(--17on-card-bg);
-    border-radius: 25px;
-    padding: 35px 30px;
+    border-radius: var(--border-radius-lg, 25px);
+    padding: clamp(20px, 3vw, 35px) clamp(18px, 2.5vw, 30px);
     text-align: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -206,19 +208,19 @@ body.landing-page main {
 }
 
 .feature-icon {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+    font-size: clamp(2rem, 3vw, 2.5rem);
+    margin-bottom: clamp(12px, 2vw, 20px);
 }
 
 .feature-card h3 {
-    font-size: 1.1rem;
+    font-size: clamp(0.95rem, 0.85rem + 0.3vw, 1.1rem);
     font-weight: 600;
     color: var(--17on-card-text);
-    margin-bottom: 12px;
+    margin-bottom: clamp(8px, 1.5vw, 12px);
 }
 
 .feature-card p {
-    font-size: 0.9rem;
+    font-size: var(--font-size-sm, clamp(0.8rem, 0.75rem + 0.15vw, 0.9rem));
     color: #555;
     line-height: 1.6;
     margin: 0;
@@ -234,19 +236,19 @@ body.landing-page main {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 40px;
+    gap: clamp(6px, 1vw, 10px);
+    margin-bottom: clamp(25px, 4vw, 40px);
 }
 
 .style-tab {
     background: transparent;
     border: 1.5px solid rgba(255, 255, 255, 0.3);
     color: rgba(255, 255, 255, 0.7);
-    padding: 10px 24px;
+    padding: clamp(7px, 1.2vw, 10px) clamp(14px, 2.5vw, 24px);
     border-radius: 20px;
     cursor: pointer;
     font-family: 'Poppins', sans-serif;
-    font-size: 0.9rem;
+    font-size: var(--font-size-sm, clamp(0.8rem, 0.75rem + 0.15vw, 0.9rem));
     font-weight: 500;
     transition: all 0.3s ease;
 }
@@ -264,9 +266,9 @@ body.landing-page main {
 
 .style-content {
     background: var(--17on-card-bg);
-    border-radius: 25px;
-    padding: 40px;
-    max-width: 700px;
+    border-radius: var(--border-radius-lg, 25px);
+    padding: clamp(20px, 4vw, 40px);
+    max-width: min(700px, 100%);
     margin: 0 auto;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
@@ -281,21 +283,21 @@ body.landing-page main {
 }
 
 .style-panel h3 {
-    font-size: 1.3rem;
+    font-size: clamp(1.1rem, 0.95rem + 0.4vw, 1.3rem);
     color: var(--17on-card-text);
     margin-bottom: 10px;
 }
 
 .style-structure {
-    font-size: 1rem;
+    font-size: clamp(0.85rem, 0.8rem + 0.2vw, 1rem);
     color: var(--17on-purple);
     font-weight: 600;
-    margin-bottom: 25px;
+    margin-bottom: clamp(15px, 3vw, 25px);
 }
 
 .style-example {
     font-style: italic;
-    font-size: 1.1rem;
+    font-size: clamp(0.95rem, 0.85rem + 0.3vw, 1.1rem);
     color: #333;
     line-height: 2;
 }
@@ -307,22 +309,22 @@ body.landing-page main {
 .style-attribution {
     font-size: 0.85rem;
     color: #888;
-    margin-top: 20px;
+    margin-top: clamp(12px, 2vw, 20px);
     font-style: normal;
 }
 
 /* Collectibles Section */
 .collectibles-preview {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: clamp(20px, 4vw, 40px);
     align-items: start;
 }
 
 .stationery-samples {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    gap: clamp(10px, 1.5vw, 15px);
 }
 
 .stationery-card {
@@ -331,7 +333,7 @@ body.landing-page main {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 15px;
+    padding: clamp(10px, 2vw, 15px);
     color: #fff;
     font-size: 0.85rem;
     font-weight: 500;
@@ -362,39 +364,42 @@ body.landing-page main {
 
 .collectibles-info {
     background: var(--17on-card-bg);
-    border-radius: 25px;
-    padding: 35px;
+    border-radius: var(--border-radius-lg, 25px);
+    padding: clamp(20px, 3.5vw, 35px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .collectibles-info h3 {
-    font-size: 1.3rem;
+    font-size: clamp(1.1rem, 0.95rem + 0.4vw, 1.3rem);
     color: var(--17on-card-text);
-    margin-bottom: 20px;
+    margin-bottom: clamp(12px, 2vw, 20px);
 }
 
 .collectibles-description {
-    font-size: 0.95rem;
+    font-size: var(--font-size-md, clamp(0.9rem, 0.85rem + 0.2vw, 0.95rem));
     color: #555;
     line-height: 1.7;
-    margin-bottom: 15px;
+    margin-bottom: clamp(10px, 2vw, 15px);
 }
 
 .collection-stats {
     display: flex;
     justify-content: space-around;
-    margin-top: 25px;
-    padding-top: 25px;
+    flex-wrap: wrap;
+    gap: clamp(10px, 2vw, 15px);
+    margin-top: clamp(15px, 2.5vw, 25px);
+    padding-top: clamp(15px, 2.5vw, 25px);
     border-top: 1px solid #eee;
 }
 
 .stat-item {
     text-align: center;
+    min-width: 60px;
 }
 
 .stat-number {
     display: block;
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 1.2rem + 0.8vw, 2rem);
     font-weight: 700;
     color: var(--17on-purple);
 }
@@ -407,16 +412,16 @@ body.landing-page main {
 /* Pricing Section */
 .pricing-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: clamp(20px, 3vw, 30px);
     max-width: 800px;
     margin: 0 auto;
 }
 
 .pricing-card {
     background: var(--17on-card-bg);
-    border-radius: 25px;
-    padding: 40px 35px;
+    border-radius: var(--border-radius-lg, 25px);
+    padding: clamp(25px, 3.5vw, 40px) clamp(20px, 3vw, 35px);
     text-align: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     position: relative;
@@ -443,19 +448,20 @@ body.landing-page main {
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: 600;
+    white-space: nowrap;
 }
 
 .pricing-card h3 {
-    font-size: 1.4rem;
+    font-size: clamp(1.2rem, 1rem + 0.4vw, 1.4rem);
     color: var(--17on-card-text);
     margin-bottom: 10px;
 }
 
 .pricing-price {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 1.5rem + 1vw, 2.5rem);
     font-weight: 700;
     color: var(--17on-purple);
-    margin-bottom: 25px;
+    margin-bottom: clamp(15px, 2.5vw, 25px);
 }
 
 .pricing-price span {
@@ -472,10 +478,10 @@ body.landing-page main {
 }
 
 .pricing-features li {
-    padding: 10px 0;
+    padding: clamp(8px, 1.2vw, 10px) 0;
     border-bottom: 1px solid #eee;
     color: #555;
-    font-size: 0.95rem;
+    font-size: var(--font-size-md, clamp(0.9rem, 0.85rem + 0.2vw, 0.95rem));
     display: flex;
     align-items: center;
     gap: 10px;
@@ -494,6 +500,7 @@ body.landing-page main {
     margin-left: 8px;
     font-weight: 600;
     text-transform: uppercase;
+    white-space: nowrap;
 }
 
 .pricing-features li::before {
@@ -515,31 +522,31 @@ body.landing-page main {
 }
 
 .feedback-container {
-    max-width: 600px;
+    max-width: min(600px, 100%);
     margin: 0 auto;
 }
 
 .feedback-intro {
     text-align: center;
     color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 40px;
-    font-size: 1rem;
+    margin-bottom: clamp(25px, 4vw, 40px);
+    font-size: clamp(0.9rem, 0.85rem + 0.2vw, 1rem);
 }
 
 .feedback-form {
     background: var(--17on-card-bg);
-    border-radius: 25px;
-    padding: 40px;
+    border-radius: var(--border-radius-lg, 25px);
+    padding: clamp(20px, 4vw, 40px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: clamp(15px, 2.5vw, 20px);
 }
 
 .form-group label {
     display: block;
-    font-size: 0.9rem;
+    font-size: var(--font-size-sm, clamp(0.8rem, 0.75rem + 0.15vw, 0.9rem));
     font-weight: 500;
     color: var(--17on-card-text);
     margin-bottom: 8px;
@@ -549,11 +556,11 @@ body.landing-page main {
 .form-group textarea,
 .form-group select {
     width: 100%;
-    padding: 14px 16px;
+    padding: clamp(10px, 1.5vw, 14px) clamp(12px, 2vw, 16px);
     border: 1px solid #ddd;
     border-radius: 12px;
     font-family: 'Poppins', sans-serif;
-    font-size: 0.95rem;
+    font-size: var(--font-size-md, clamp(0.9rem, 0.85rem + 0.2vw, 0.95rem));
     background: #f8f8f8;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -567,7 +574,7 @@ body.landing-page main {
 }
 
 .form-group textarea {
-    min-height: 120px;
+    min-height: clamp(80px, 12vw, 120px);
     resize: vertical;
 }
 
@@ -579,13 +586,13 @@ body.landing-page main {
 
 .submit-btn {
     width: 100%;
-    padding: 16px;
+    padding: clamp(12px, 2vw, 16px);
     background: var(--17on-purple);
     color: #fff;
     border: none;
     border-radius: 25px;
     font-family: 'Poppins', sans-serif;
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 0.85rem + 0.2vw, 1rem);
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
@@ -624,24 +631,25 @@ body.landing-page main {
 /* Final CTA Section */
 .final-cta {
     text-align: center;
-    padding: 100px 20px 120px;
+    padding: clamp(60px, 8vw, 100px) clamp(15px, 4vw, 20px) clamp(80px, 10vw, 120px);
 }
 
 .final-tagline {
-    font-size: 2rem;
+    font-size: clamp(1.3rem, 1rem + 1vw, 2rem);
     font-weight: 700;
     color: var(--17on-text);
-    margin-bottom: 40px;
+    margin-bottom: clamp(25px, 4vw, 40px);
 }
 
 .final-badges {
     display: flex;
     justify-content: center;
-    gap: 25px;
+    flex-wrap: wrap;
+    gap: clamp(15px, 3vw, 25px);
 }
 
 .final-badges .store-badge {
-    height: 55px;
+    height: clamp(42px, 6vw, 55px);
     transition: transform 0.2s ease;
 }
 
@@ -650,66 +658,10 @@ body.landing-page main {
 }
 
 /* Responsive Design */
-@media (max-width: 900px) {
-    .features-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
 
-    .collectibles-preview {
-        grid-template-columns: 1fr;
-    }
-
-    .stationery-samples {
-        max-width: 400px;
-        margin: 0 auto 30px;
-    }
-}
-
+/* Tablet - haiku wrapping */
 @media (max-width: 768px) {
-    .hero-tagline {
-        font-size: 2rem;
-    }
-
-    .app-icon-large {
-        width: 120px;
-        height: 120px;
-    }
-
-    .features-grid {
-        grid-template-columns: 1fr;
-        max-width: 400px;
-        margin: 0 auto;
-    }
-
-    .pricing-grid {
-        grid-template-columns: 1fr;
-        max-width: 400px;
-    }
-
-    .styles-tabs {
-        gap: 8px;
-    }
-
-    .style-tab {
-        padding: 8px 18px;
-        font-size: 0.85rem;
-    }
-
-    .section-title {
-        font-size: 1.6rem;
-        margin-bottom: 40px;
-    }
-
-    .landing-section {
-        padding: 70px 20px;
-    }
-
-    .haiku-demo {
-        padding: 30px 20px;
-    }
-
     .haiku-line {
-        font-size: 1.1rem;
         flex-wrap: wrap;
         gap: 5px;
         min-height: 3.5em;
@@ -720,61 +672,6 @@ body.landing-page main {
         width: 100%;
         text-align: center;
         min-height: 1.3em;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-section {
-        padding: 100px 15px 50px;
-    }
-
-    .hero-tagline {
-        font-size: 1.6rem;
-    }
-
-    .app-icon-large {
-        width: 100px;
-        height: 100px;
-        border-radius: 24px;
-    }
-
-    .hero-badges {
-        gap: 10px;
-    }
-
-    .hero-badges .store-badge {
-        height: 38px;
-    }
-
-    .feature-card {
-        padding: 25px 20px;
-    }
-
-    .style-content {
-        padding: 30px 20px;
-    }
-
-    .pricing-card {
-        padding: 30px 25px;
-    }
-
-    .feedback-form {
-        padding: 30px 20px;
-    }
-
-    .final-tagline {
-        font-size: 1.5rem;
-    }
-
-    .final-badges {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-    }
-
-    .stationery-samples {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
     }
 }
 
