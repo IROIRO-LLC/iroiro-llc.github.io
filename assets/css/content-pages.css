@@ -4,24 +4,39 @@
    Imports base.css for shared foundation.
    ============================================================ */
 
-/* --- Main layout override (no 100vh hero) --- */
-main {
+/* --- Full-viewport flex layout — footer pinned to bottom --- */
+body {
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
-    padding-top: clamp(55px, 8vw, 65px);
+}
+
+/* --- Main layout override --- */
+main {
+    flex: 1;
     display: flex;
     flex-direction: column;
 }
 
-/* --- Translucent overlay override (transparent bg, no min-height) --- */
+/* --- Translucent overlay: center glass pane, match blog styling --- */
 .content-section.translucent-overlay {
-    padding: clamp(10px, 3vw, 20px);
-    background-color: transparent;
+    flex: 1;
     min-height: auto;
+    align-items: center;
+    padding-top: calc(var(--header-height) + clamp(20px, 3vw, 40px));
+    padding-bottom: clamp(40px, 6vw, 80px);
 }
 
-/* --- Content container override (flush with header) --- */
+/* --- Content container override --- */
 .content-container {
-    margin: 0 auto clamp(15px, 3vw, 20px) auto;
+    margin: 0 auto;
+}
+
+/* --- Footer solid bg so particles don't bleed below --- */
+#footer {
+    position: relative;
+    z-index: 2;
+    background-color: var(--color-bg-subtle);
 }
 
 /* --- Header override (fully transparent on content pages) --- */
