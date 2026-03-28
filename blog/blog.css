@@ -4,9 +4,23 @@
    with p5.js particle background behind it.
    ============================================================ */
 
+/* --- Full-viewport flex layout so footer always sits at bottom --- */
+body.blog-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+body.blog-page > main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
 /* --- Override base translucent-overlay for blog pages --- */
-/* Remove min-height:100vh so the section hugs content + footer */
+/* Grow to fill remaining space so footer is pushed to the bottom */
 body.blog-page .content-section.translucent-overlay {
+    flex: 1;
     min-height: auto;
     padding-bottom: clamp(40px, 6vw, 80px);
 }
@@ -15,7 +29,12 @@ body.blog-page .content-section.translucent-overlay {
 body.blog-page #footer {
     position: relative;
     z-index: 2;
-    background-color: var(--color-bg);
+    background-color: var(--color-bg-subtle);
+}
+
+/* Cover any remaining viewport below the footer (e.g. short content pages) */
+body.blog-page #footer footer {
+    padding-bottom: var(--space-2xl);
 }
 
 /* --- Blog Article (inside content-container) --- */
