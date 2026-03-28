@@ -4,10 +4,18 @@
    with p5.js particle background behind it.
    ============================================================ */
 
+/* --- Override base translucent-overlay for blog pages --- */
+/* Remove min-height:100vh so the section hugs content + footer */
+body.blog-page .content-section.translucent-overlay {
+    min-height: auto;
+    padding-bottom: clamp(40px, 6vw, 80px);
+}
+
 /* --- Blog Article (inside content-container) --- */
 .content-container.blog-article {
     max-width: 760px;
     text-align: left;
+    margin-top: clamp(70px, 10vw, 100px);
 }
 
 .blog-article .post-meta {
@@ -187,6 +195,7 @@
 .content-container.blog-index {
     max-width: 760px;
     text-align: left;
+    margin-top: clamp(70px, 10vw, 100px);
 }
 
 .blog-index h1 {
@@ -249,4 +258,44 @@
 
 .back-to-blog:hover {
     color: var(--color-primary);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .content-container.blog-article,
+    .content-container.blog-index {
+        margin-top: calc(var(--header-height) + 10px);
+        padding: clamp(16px, 3vw, 24px);
+    }
+
+    .blog-article h1 {
+        font-size: clamp(1.4rem, 1.2rem + 0.8vw, 1.8rem);
+    }
+
+    .blog-article .post-subtitle {
+        font-size: var(--font-size-base);
+    }
+
+    .blog-body h2 {
+        margin-top: var(--space-2xl);
+    }
+
+    .blog-cta {
+        padding: var(--space-lg);
+    }
+
+    .blog-cta .store-badges {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .blog-article .post-meta {
+        gap: var(--space-sm);
+    }
+
+    .blog-card .card-meta {
+        gap: var(--space-sm);
+    }
 }
