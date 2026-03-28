@@ -22,6 +22,7 @@ body.blog-page > main {
 body.blog-page .content-section.translucent-overlay {
     flex: 1;
     min-height: auto;
+    align-items: center;
     padding-bottom: clamp(40px, 6vw, 80px);
 }
 
