@@ -1,19 +1,13 @@
 /* ============================================================
    BLOG.CSS — Blog layout styles for iroiro.us/blog
-   Black background, white text, cyan accent, Poppins font
+   Content lives inside .content-container glass pane from base.css
+   with p5.js particle background behind it.
    ============================================================ */
 
-/* --- Blog Article Layout --- */
-.blog-article {
+/* --- Blog Article (inside content-container) --- */
+.content-container.blog-article {
     max-width: 760px;
-    width: min(92%, 760px);
-    margin: 0 auto;
-    padding: calc(var(--header-height) + 40px) clamp(16px, 4vw, 24px) 60px;
-}
-
-.blog-article header {
-    margin-bottom: var(--space-2xl);
-    position: relative;
+    text-align: left;
 }
 
 .blog-article .post-meta {
@@ -26,7 +20,8 @@
     flex-wrap: wrap;
 }
 
-.blog-article .post-meta .category {
+.blog-article .post-meta .category,
+.blog-card .card-meta .category {
     background: rgba(66, 227, 245, 0.15);
     color: var(--color-primary);
     padding: 2px 12px;
@@ -43,13 +38,14 @@
     line-height: 1.2;
     color: var(--color-white);
     margin-bottom: var(--space-md);
+    text-align: left;
 }
 
 .blog-article .post-subtitle {
     font-size: var(--font-size-lg);
     color: var(--color-text-muted);
     line-height: 1.5;
-    margin-bottom: 0;
+    margin-bottom: var(--space-2xl);
 }
 
 /* --- Blog Body Content --- */
@@ -187,18 +183,17 @@
     transform: scale(1.05);
 }
 
-/* --- Blog Index / Card List --- */
-.blog-index {
+/* --- Blog Index (inside content-container) --- */
+.content-container.blog-index {
     max-width: 760px;
-    width: min(92%, 760px);
-    margin: 0 auto;
-    padding: calc(var(--header-height) + 40px) clamp(16px, 4vw, 24px) 60px;
+    text-align: left;
 }
 
 .blog-index h1 {
     font-size: var(--font-size-2xl);
     color: var(--color-white);
     margin-bottom: var(--space-2xl);
+    text-align: left;
 }
 
 .blog-card {
@@ -207,6 +202,10 @@
     border-bottom: 1px solid var(--color-border-subtle);
     text-decoration: none;
     transition: opacity 0.2s ease;
+}
+
+.blog-card:first-of-type {
+    padding-top: 0;
 }
 
 .blog-card:hover {
@@ -220,16 +219,6 @@
     display: flex;
     align-items: center;
     gap: var(--space-md);
-}
-
-.blog-card .card-meta .category {
-    background: rgba(66, 227, 245, 0.15);
-    color: var(--color-primary);
-    padding: 2px 10px;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 500;
-    text-transform: uppercase;
 }
 
 .blog-card h2 {
@@ -260,15 +249,4 @@
 
 .back-to-blog:hover {
     color: var(--color-primary);
-}
-
-/* --- Responsive --- */
-@media (max-width: 768px) {
-    .blog-article {
-        padding-top: calc(var(--header-height) + 20px);
-    }
-
-    .blog-index {
-        padding-top: calc(var(--header-height) + 20px);
-    }
 }
