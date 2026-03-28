@@ -18,11 +18,12 @@ body.blog-page > main {
 }
 
 /* --- Override base translucent-overlay for blog pages --- */
-/* Grow to fill remaining space so footer is pushed to the bottom */
+/* Grow to fill remaining space; center the glass pane between header & footer */
 body.blog-page .content-section.translucent-overlay {
     flex: 1;
     min-height: auto;
     align-items: center;
+    padding-top: calc(var(--header-height) + clamp(20px, 3vw, 40px));
     padding-bottom: clamp(40px, 6vw, 80px);
 }
 
@@ -42,7 +43,6 @@ body.blog-page #footer footer {
 .content-container.blog-article {
     max-width: 760px;
     text-align: left;
-    margin-top: clamp(70px, 10vw, 100px);
 }
 
 .blog-article .post-meta {
@@ -222,7 +222,6 @@ body.blog-page #footer footer {
 .content-container.blog-index {
     max-width: 760px;
     text-align: left;
-    margin-top: clamp(70px, 10vw, 100px);
 }
 
 .blog-index h1 {
@@ -291,7 +290,6 @@ body.blog-page #footer footer {
 @media (max-width: 768px) {
     .content-container.blog-article,
     .content-container.blog-index {
-        margin-top: calc(var(--header-height) + 10px);
         padding: clamp(16px, 3vw, 24px);
     }
 
