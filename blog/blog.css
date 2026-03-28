@@ -11,6 +11,13 @@ body.blog-page .content-section.translucent-overlay {
     padding-bottom: clamp(40px, 6vw, 80px);
 }
 
+/* Footer needs solid bg so particles don't bleed through below the overlay */
+body.blog-page #footer {
+    position: relative;
+    z-index: 2;
+    background-color: var(--color-bg);
+}
+
 /* --- Blog Article (inside content-container) --- */
 .content-container.blog-article {
     max-width: 760px;
