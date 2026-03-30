@@ -188,10 +188,11 @@ body.blog-page #footer footer {
 }
 
 .blog-cta-app-icon {
+    display: block;
     width: 80px;
     height: 80px;
     border-radius: 18px;
-    margin-bottom: var(--space-lg);
+    margin: 0 auto var(--space-lg);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
