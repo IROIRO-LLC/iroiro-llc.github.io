@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tenor API Is Shutting Down: How to Switch to Klipy | IROIRO</title>
+    <meta name="description" content="Google is shutting down the Tenor API on June 30, 2026. Here's why Klipy is the best alternative and how to migrate your GIF integration before the deadline.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://iroiro.us/blog/posts/2026-03-31-tenor-api-shutting-down-klipy-alternative.html">
+    <meta property="og:title" content="Tenor API Is Shutting Down: How to Switch to Klipy | IROIRO">
+    <meta property="og:description" content="Google is shutting down the Tenor API on June 30, 2026. Here's why Klipy is the best alternative and how to migrate your GIF integration before the deadline.">
+    <meta property="og:image" content="https://iroiro.us/assets/images/background.jpg">
+    <meta property="og:site_name" content="IROIRO">
+    <meta property="article:published_time" content="2026-03-31">
+    <meta property="article:author" content="IROIRO">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://iroiro.us/blog/posts/2026-03-31-tenor-api-shutting-down-klipy-alternative.html">
+    <meta name="twitter:title" content="Tenor API Is Shutting Down: How to Switch to Klipy | IROIRO">
+    <meta name="twitter:description" content="Google is shutting down the Tenor API on June 30, 2026. Here's why Klipy is the best alternative and how to migrate your GIF integration before the deadline.">
+    <meta name="twitter:image" content="https://iroiro.us/assets/images/background.jpg">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Tenor API Is Shutting Down: How to Switch to Klipy",
+        "description": "Google is shutting down the Tenor API on June 30, 2026. Here's why Klipy is the best alternative and how to migrate your GIF integration before the deadline.",
+        "image": "https://iroiro.us/assets/images/background.jpg",
+        "datePublished": "2026-03-31",
+        "dateModified": "2026-03-31",
+        "author": {
+            "@type": "Organization",
+            "name": "IROIRO",
+            "url": "https://iroiro.us"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "IROIRO",
+            "url": "https://iroiro.us",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://iroiro.us/assets/images/logo.png"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://iroiro.us/blog/posts/2026-03-31-tenor-api-shutting-down-klipy-alternative.html"
+        }
+    }
+    </script>
+
+    <!-- FAQ Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "When is the Tenor API shutting down?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The Tenor API will be fully shut down on June 30, 2026. After that date, any API requests to Tenor will fail with an error. New API key sign-ups were already blocked as of January 13, 2026."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the best alternative to the Tenor API?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Klipy is the strongest alternative, offering a free-forever API with support for GIFs, clips, stickers, memes, and AI-generated emojis. Major platforms like WhatsApp, Discord, Canva, Figma, and Microsoft Outlook already use Klipy. The migration path from Tenor is designed to be a near drop-in replacement."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is the Klipy API free?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Klipy offers a lifetime free API tier. Their monetization model uses non-intrusive ads integrated into search and trending results, which means developers can use the API at no cost and optionally generate ad revenue from the integration."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How hard is it to migrate from Tenor to Klipy?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Klipy has designed its API as a near drop-in replacement for Tenor. The endpoint structure and response formats are intentionally similar, so most developers can swap the base URL and API key with minimal changes to their existing integration code."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why did Google shut down the Tenor API?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Google stated the change was made to focus resources on enhancing core products. Google acquired Tenor in 2018, but the third-party API was not a priority for their business. The Tenor website and integration in Google products may continue, but the public developer API is being retired."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/blog/blog.css">
+    <link rel="icon" href="/assets/images/logo.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="blog-page">
+
+<!-- Header -->
+<header class="overlay-header">
+    <div class="container">
+        <div class="main-title">
+            <img src="/assets/images/logo.png" alt="IROIRO logo" class="title-logo">
+            IROIRO <span class="jp-chars">色々</span>
+        </div>
+        <nav class="overlay-nav">
+            <a href="/index.html" class="nav-button">Home</a>
+            <a href="/blog/index.html" class="nav-button current">Blog</a>
+            <a href="/pages/contact.html" class="nav-button">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<!-- Main content -->
+<main>
+    <section class="content-section translucent-overlay">
+        <div class="content-container blog-article">
+
+            <a href="/blog/index.html" class="back-to-blog">&larr; All posts</a>
+
+            <div class="post-meta">
+                <span class="category">Developer</span>
+                <time datetime="2026-03-31">March 31, 2026</time>
+                <span>&middot; 10 min read</span>
+            </div>
+            <h1>Tenor API Is Shutting Down: How to Switch to Klipy</h1>
+            <p class="post-subtitle">Google is pulling the plug on the Tenor API on June 30, 2026. You have three months. Here is what to know and why Klipy makes migration painless.</p>
+
+            <div class="blog-body">
+
+                <p>The Tenor API is shutting down. On January 13, 2026, Google announced that the public Tenor API would be deprecated, with a hard cutoff on June 30, 2026. After that date, every API request your app makes to Tenor will fail. New API key sign-ups were blocked immediately. If your app relies on Tenor for GIF search, trending content, or sticker delivery, you have roughly three months to find an alternative and ship the migration.</p>
+
+                <p>This is not a soft sunset. Google's announcement was clear: "Any API or Ads Distribution Agreements you have with Tenor will be terminated." The clock is ticking, and the consequences of doing nothing are binary — your GIF features stop working entirely on July 1st.</p>
+
+                <h2>Why Google Is Killing the Tenor API</h2>
+
+                <p>Google acquired Tenor in 2018, primarily to feed GIF results into Google Search, Google Images, and the Gboard keyboard. The public developer API was always secondary to that core use case. The official statement says the change is being made to "focus resources on enhancing core products," which is corporate shorthand for: the API is not a priority and maintaining it costs more than it earns.</p>
+
+                <p>This follows a familiar pattern. Google has a well-documented history of acquiring platforms, integrating the parts that serve its ecosystem, and sunsetting the rest. For developers who built on Tenor's API in good faith, it is frustrating but not surprising. The lesson, as always: platform risk is real, and building on a free API owned by a company that does not monetize it is inherently fragile.</p>
+
+                <h2>Your Options Right Now</h2>
+
+                <p>With Tenor going dark, the GIF API landscape has narrowed to two serious contenders: GIPHY and Klipy.</p>
+
+                <p><strong>GIPHY</strong> has the largest content library and the strongest brand recognition. However, GIPHY's API is <a href="https://dev.to/giorgi_khachidze_ab9ac4ad/giphys-gif-api-is-no-longer-free-heres-what-you-need-to-know-l7h" rel="noopener">no longer free</a>. After Meta's acquisition and subsequent divestiture, GIPHY introduced paid tiers that can be prohibitively expensive for indie developers and smaller apps. If you have budget and your product depends heavily on GIF volume, GIPHY is a viable option. But for many developers, the pricing is a dealbreaker.</p>
+
+                <p><strong>Klipy</strong> is the one to watch. It offers a lifetime free API tier, a content library that goes well beyond GIFs, and a migration path that is specifically designed to make switching from Tenor as painless as possible. Major platforms are already making the move — <a href="https://gadgets.beebom.com/news/whatsapp-to-replace-tenor-with-klipy-for-gifs-and-stickers" rel="noopener">WhatsApp is replacing Tenor with Klipy</a>, Discord is testing it, and Klipy's API already powers integrations in Canva, Figma, Miro, and Microsoft Outlook.</p>
+
+                <h2>Why Klipy Is the Strongest Tenor Alternative</h2>
+
+                <p>Klipy is not just a GIF search API. It is a full multimedia content platform with dedicated endpoints for GIFs, short video clips, stickers, memes, and AI-generated emojis. That breadth matters because modern messaging apps do not just need GIFs anymore — users expect stickers, reaction clips, and trending meme content as part of the same experience.</p>
+
+                <p>The API is structured around a few core concepts that will feel immediately familiar if you have worked with Tenor. You get search, trending, and category endpoints. You get content type filtering. You get localized trending results tailored to language and region. The response format is clean JSON with predictable media URLs.</p>
+
+                <p>Here is what sets Klipy apart from both Tenor and GIPHY:</p>
+
+                <p><strong>Free forever.</strong> Klipy's business model is built around non-intrusive programmatic and native ads that can be optionally inserted between search and trending results. Developers can monetize the integration or skip ads entirely. Either way, the API itself costs nothing. No usage caps, no surprise invoices, no bait-and-switch pricing.</p>
+
+                <p><strong>More content types.</strong> Tenor was a GIF-first platform. Klipy serves GIFs, video clips (up to 10 seconds), stickers, memes, and AI emojis through a unified API. One integration, five content types. If your app's GIF picker has ever felt limited, Klipy's content breadth is a genuine upgrade.</p>
+
+                <p><strong>Localization built in.</strong> Trending results are automatically localized by language and region. If you serve a global user base, this means your trending feed is relevant to each user's context without extra work on your end.</p>
+
+                <p><strong>Drop-in migration from Tenor.</strong> This is the big one. Klipy has intentionally structured its API to mirror Tenor's endpoint patterns. The migration is designed to be as close to a find-and-replace operation as possible — swap the base URL, swap the API key, adjust a few parameter names, and your existing integration logic stays largely intact.</p>
+
+                <h2>The Migration Is Simpler Than You Think</h2>
+
+                <p>If you have a working Tenor integration, migrating to Klipy is not a rewrite. It is closer to a configuration change with some parameter cleanup. The broad strokes look like this.</p>
+
+                <p>First, <a href="https://klipy.com/developers" rel="noopener">request a Klipy API key</a> from their partner panel. This is free and takes minutes.</p>
+
+                <p>Second, swap your base API URL. Replace the Tenor API endpoint with Klipy's equivalent. The endpoint structure is intentionally similar — search, trending, and categories map directly.</p>
+
+                <p>Third, update your request parameters. The parameter names may differ slightly (Tenor used <code>q</code> for search queries, and Klipy uses the same convention), but the patterns are consistent. Your parsing logic for the JSON response should need only minor adjustments.</p>
+
+                <p>Fourth, test. Verify that search results, trending feeds, and any content-type filtering work as expected. Klipy's response payloads include media URLs in multiple formats and sizes, so check that your UI renders correctly with the new URL patterns.</p>
+
+                <p>For most apps, this is a few hours of focused work, not a sprint-long project. <a href="https://github.com/KLIPY-com/Klipy-GIF-API" rel="noopener">Klipy's GitHub repo</a> has reference implementations and documentation that walk through the migration step by step.</p>
+
+                <h2>What Happens If You Do Nothing</h2>
+
+                <p>On July 1, 2026, your Tenor API calls start returning errors. Depending on how your app handles failed network requests, this could mean empty GIF pickers, broken search results, crashed screens, or a degraded experience that sends users looking for alternatives. There is no grace period and no extension. Google has been unambiguous about the timeline.</p>
+
+                <p>If you are still in the planning stage, now is the time to start. June 30th lands on a Tuesday, which means the break happens mid-week with zero runway. Ship the migration early, give yourself a buffer for testing, and avoid the scramble.</p>
+
+                <h2>How We Made the Switch: MeMemes</h2>
+
+                <p>We are not just writing about this from the sidelines. At IROIRO, we built <a href="https://mememes.iroiro.us" rel="noopener">MeMemes</a> — a meme organizer for iPhone and iPad with an iMessage extension, on-device AI tagging, and a trending content discovery feed — and we chose Klipy as our content API from day one.</p>
+
+                <div class="blog-hero-showcase">
+                    <img src="/assets/images/mememes/app_icon.png" alt="MeMemes app icon" class="blog-hero-app-icon">
+                    <div class="blog-hero-badges">
+                        <a href="https://apps.apple.com/us/app/mememes-meme-gif-organizer/id6738795310" target="_blank" rel="noopener">
+                            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+                        </a>
+                    </div>
+                    <div class="blog-screenshot-carousel">
+                        <img src="/assets/images/mememes/screenshot-1.jpeg" alt="MeMemes main library view" class="blog-screenshot">
+                        <img src="/assets/images/mememes/screenshot-2.jpeg" alt="MeMemes smart tagging" class="blog-screenshot">
+                        <img src="/assets/images/mememes/screenshot-3.jpeg" alt="MeMemes trending discovery" class="blog-screenshot">
+                        <img src="/assets/images/mememes/screenshot-4.jpeg" alt="MeMemes iMessage extension" class="blog-screenshot">
+                        <img src="/assets/images/mememes/screenshot-5.jpeg" alt="MeMemes pack organization" class="blog-screenshot">
+                    </div>
+                </div>
+
+                <p>MeMemes' Discover tab — where users browse trending GIFs, clips, stickers, and emojis — is powered entirely by Klipy's API. The integration was fast and straightforward. Klipy's endpoint structure is clean, the documentation is solid, and the response payloads include multiple media renditions so we could serve the right size for everything from an iMessage extension thumbnail to a full-screen preview.</p>
+
+                <p>The content quality has been excellent. Klipy's trending feed surfaces relevant, fresh content across all media types, and the localization support means our users see culturally relevant results without us building any geo-targeting logic. The API has been rock-solid in production since MeMemes launched — zero downtime, fast response times, and a content library that keeps our users engaged.</p>
+
+                <p>For any developer staring down the Tenor deadline, we can say from firsthand experience: the switch to Klipy is not scary. It is an upgrade. You get more content types, better documentation, a sustainable business model that will not get sunset by a parent company's shifting priorities, and a free tier that actually stays free.</p>
+
+                <p>MeMemes is available now as a <a href="https://apps.apple.com/us/app/mememes-meme-gif-organizer/id6738795310" rel="noopener">free download on the App Store</a>. If you want to see what a Klipy-powered content experience looks like in a shipping product, it is the proof that the migration works.</p>
+
+                <hr>
+
+                <div class="faq-section">
+                    <h2>Frequently Asked Questions</h2>
+
+                    <div class="faq-item">
+                        <h3>When is the Tenor API shutting down?</h3>
+                        <p>The Tenor API will be fully shut down on June 30, 2026. After that date, any API requests to Tenor will fail with an error message. New API key sign-ups were already blocked as of January 13, 2026. Existing integrations continue to work until the shutdown date.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>What is the best alternative to the Tenor API?</h3>
+                        <p>Klipy is the strongest alternative for most developers, offering a lifetime free API with support for GIFs, video clips, stickers, memes, and AI-generated emojis. Major platforms like WhatsApp, Discord, Canva, Figma, and Microsoft Outlook already use Klipy. GIPHY is another option but no longer offers a free tier.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Is the Klipy API free?</h3>
+                        <p>Yes. Klipy offers a lifetime free API tier with no usage caps. Their monetization model uses optional non-intrusive ads integrated into search and trending results, which means developers can use the API at no cost and optionally generate ad revenue from the integration.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>How hard is it to migrate from Tenor to Klipy?</h3>
+                        <p>Klipy has designed its API as a near drop-in replacement for Tenor. The endpoint structure and response formats are intentionally similar, so most developers can swap the base URL and API key with minimal changes to existing integration code. For most apps, the migration takes a few hours, not weeks.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Why did Google shut down the Tenor API?</h3>
+                        <p>Google stated the change was made to "focus resources on enhancing core products." Google acquired Tenor in 2018 primarily to serve GIF results in Google Search and Gboard. The public developer API was not central to that strategy and has been retired as a result.</p>
+                    </div>
+                </div>
+
+                <hr>
+
+                <!-- CTA -->
+                <div class="blog-cta">
+                    <img src="/assets/images/mememes/app_icon.png" alt="MeMemes app icon" class="blog-cta-app-icon">
+                    <h3>See Klipy in Action</h3>
+                    <p>MeMemes is built on Klipy from the ground up. Browse trending GIFs, clips, stickers, and emojis — all powered by Klipy's API. Free on the App Store.</p>
+                    <div class="store-badges">
+                        <a href="https://apps.apple.com/us/app/mememes-meme-gif-organizer/id6738795310" target="_blank" rel="noopener">
+                            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+</main>
+
+<!-- Load p5.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+
+<!-- Load Custom Scripts -->
+<script src="/assets/js/iroiro-sketch.js"></script>
+<script src="/assets/js/observeSections.js"></script>
+<script src="/assets/js/loadHeaderAndFooter.js"></script>
+
+</body>
+</html>
