@@ -1,0 +1,7 @@
+name = "mememes-landing-page"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+routes = [
+  { pattern = "mememes.iroiro.us/*", zone_name = "iroiro.us" }
+]

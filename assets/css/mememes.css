@@ -1,0 +1,753 @@
+/* ============================================================
+   MEMEMES.CSS — MeMemes landing page styles
+   Neo-brutalist design with bold borders, offset shadows,
+   90s Nickelodeon patterns, and customizable color themes.
+   ============================================================ */
+
+/* --- MeMemes Color Tokens (Lavender theme default) --- */
+:root {
+    --meme-accent: #7C3AED;
+    --meme-accent-hover: #6D28D9;
+    --meme-surface: #262230;
+    --meme-surface-light: #FAF7FF;
+    --meme-bg: #1A1424;
+    --meme-bg-light: #E0D4FA;
+    --meme-text: #ffffff;
+    --meme-text-dark: #1A1A1A;
+    --meme-border: #E8E8E8;
+    --meme-shadow: #E8E8E8;
+    --meme-card-bg: #262230;
+    --meme-card-text: #ffffff;
+    --meme-radius: 4px;
+    --meme-radius-pill: 6px;
+    --meme-border-width: 3px;
+    --meme-shadow-x: 5px;
+    --meme-shadow-y: 5px;
+}
+
+/* Override main padding for multi-section page */
+body.landing-page main {
+    padding-top: 0;
+}
+
+/* --- 90s Pattern Background --- */
+.nineties-pattern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.nineties-shape {
+    position: absolute;
+    color: var(--meme-accent);
+    opacity: 0.12;
+    animation: floatShape 20s infinite ease-in-out, pulseShape 4s infinite ease-in-out;
+    font-size: clamp(16px, 3vw, 28px);
+    line-height: 1;
+}
+
+@keyframes floatShape {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-15px) rotate(90deg); }
+    50% { transform: translateY(5px) rotate(180deg); }
+    75% { transform: translateY(-10px) rotate(270deg); }
+}
+
+@keyframes pulseShape {
+    0%, 100% { transform: scale(0.97); }
+    50% { transform: scale(1.03); }
+}
+
+/* Stagger each shape's animation */
+.nineties-shape:nth-child(odd) { animation-duration: 18s, 3.5s; }
+.nineties-shape:nth-child(3n) { animation-duration: 22s, 4.5s; animation-direction: reverse, normal; }
+.nineties-shape:nth-child(5n) { animation-duration: 25s, 5s; }
+.nineties-shape:nth-child(7n) { animation-duration: 16s, 3s; animation-direction: normal, reverse; }
+
+/* --- Hero Section --- */
+.hero-section {
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: clamp(90px, 12vw, 120px) 0 clamp(60px, 8vw, 80px);
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content {
+    max-width: min(800px, 90%);
+    margin: 0 auto;
+    padding: 0 clamp(15px, 4vw, 20px);
+}
+
+.app-icon-large {
+    width: clamp(80px, 12vw, 120px);
+    height: clamp(80px, 12vw, 120px);
+    border-radius: var(--meme-radius);
+    margin: 0 auto clamp(15px, 2.5vw, 20px) auto;
+    display: block;
+    border: var(--meme-border-width) solid var(--meme-border);
+    box-shadow: var(--meme-shadow-x) var(--meme-shadow-y) 0 var(--meme-shadow);
+}
+
+/* --- 3D Extruded Hero Title --- */
+.hero-tagline {
+    font-size: clamp(1.6rem, 1.2rem + 2.5vw, 2.8rem);
+    font-weight: 900;
+    margin-bottom: clamp(8px, 1.5vw, 12px);
+    color: var(--meme-surface-light);
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+}
+
+.hero-tagline .text-3d {
+    position: relative;
+    display: inline-block;
+}
+
+.hero-tagline .text-shadow-deep {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    color: var(--meme-border);
+    z-index: -2;
+    opacity: 0.3;
+}
+
+.hero-tagline .text-shadow-mid {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    color: var(--meme-accent);
+    z-index: -1;
+    opacity: 0.5;
+}
+
+.hero-tagline .text-face {
+    position: relative;
+    z-index: 1;
+    color: var(--meme-surface-light);
+    -webkit-text-stroke: 1.5px #000;
+    paint-order: stroke fill;
+}
+
+.hero-subtitle {
+    font-size: clamp(0.95rem, 0.85rem + 0.3vw, 1.15rem);
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: clamp(18px, 3vw, 25px);
+    font-weight: 600;
+}
+
+/* --- Format Tags (Brutalist Pills) --- */
+.meme-ticker {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: clamp(6px, 1vw, 10px);
+    margin-bottom: clamp(22px, 3vw, 30px);
+}
+
+.format-tag {
+    background: var(--meme-card-bg);
+    border: var(--meme-border-width) solid var(--meme-border);
+    color: var(--meme-text);
+    padding: 4px 12px;
+    border-radius: var(--meme-radius-pill);
+    font-size: clamp(0.7rem, 0.65rem + 0.2vw, 0.8rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: 3px 3px 0 var(--meme-shadow);
+    transition: all 0.15s ease;
+}
+
+.format-tag.active {
+    background: var(--meme-accent);
+    border-color: var(--meme-border);
+    color: var(--meme-text);
+    box-shadow: 2px 2px 0 var(--meme-shadow);
+    transform: translate(1px, 1px);
+}
+
+/* --- Hero Store Badges --- */
+.hero-badges {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: clamp(10px, 2vw, 20px);
+    margin-bottom: 0;
+}
+
+.hero-badges .store-badge {
+    height: clamp(38px, 5vw, 50px);
+}
+
+/* --- Screenshot Carousel --- */
+.screenshot-carousel {
+    display: flex;
+    gap: clamp(12px, 2vw, 20px);
+    justify-content: center;
+    flex-wrap: nowrap;
+    margin-top: clamp(25px, 4vw, 40px);
+    overflow-x: auto;
+    padding: 0 clamp(20px, 4vw, 40px) 10px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+}
+
+.screenshot-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.screenshot {
+    height: clamp(280px, 40vw, 420px);
+    width: auto;
+    border-radius: var(--meme-radius);
+    border: var(--meme-border-width) solid var(--meme-border);
+    box-shadow: var(--meme-shadow-x) var(--meme-shadow-y) 0 var(--meme-shadow);
+    flex-shrink: 0;
+    scroll-snap-align: center;
+    transition: transform 0.15s ease;
+}
+
+.screenshot:hover {
+    transform: translate(2px, 2px);
+}
+
+/* --- Scroll Indicator --- */
+.scroll-indicator {
+    position: absolute;
+    bottom: clamp(20px, 4vw, 40px);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: var(--color-white);
+    font-size: 0.8rem;
+    font-weight: 600;
+    animation: bounce 2s infinite;
+}
+
+.scroll-indicator svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--color-white);
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+    40% { transform: translateX(-50%) translateY(-10px); }
+    60% { transform: translateX(-50%) translateY(-5px); }
+}
+
+/* --- Landing Sections --- */
+.landing-section {
+    padding: clamp(50px, 8vw, 100px) clamp(15px, 4vw, 20px);
+    background-color: var(--meme-bg);
+    position: relative;
+    z-index: 2;
+}
+
+.landing-section .container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* --- 3D Section Titles --- */
+.section-title {
+    font-size: clamp(1.4rem, 1.1rem + 1vw, 2rem);
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: clamp(30px, 5vw, 60px);
+    color: var(--meme-text);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+}
+
+/* --- Features Grid (Brutalist Cards) --- */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+    gap: clamp(20px, 3vw, 35px);
+}
+
+.feature-card {
+    background-color: var(--meme-card-bg);
+    border-radius: var(--meme-radius);
+    padding: clamp(20px, 3vw, 30px) clamp(18px, 2.5vw, 25px);
+    text-align: center;
+    border: var(--meme-border-width) solid var(--meme-border);
+    box-shadow: var(--meme-shadow-x) var(--meme-shadow-y) 0 var(--meme-shadow);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.feature-card:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 3px 3px 0 var(--meme-shadow);
+}
+
+.feature-icon {
+    font-size: clamp(2rem, 3vw, 2.5rem);
+    margin-bottom: clamp(12px, 2vw, 18px);
+}
+
+.feature-card h3 {
+    font-size: clamp(0.95rem, 0.85rem + 0.3vw, 1.1rem);
+    font-weight: 800;
+    color: var(--meme-card-text);
+    margin-bottom: clamp(8px, 1.5vw, 10px);
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+}
+
+.feature-card p {
+    font-size: var(--font-size-sm);
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.feature-highlight {
+    color: var(--meme-accent);
+    font-weight: 700;
+}
+
+/* Stagger animation delays for feature cards */
+.feature-card:nth-child(1) { transition-delay: 0s; }
+.feature-card:nth-child(2) { transition-delay: 0.1s; }
+.feature-card:nth-child(3) { transition-delay: 0.2s; }
+.feature-card:nth-child(4) { transition-delay: 0.3s; }
+.feature-card:nth-child(5) { transition-delay: 0.4s; }
+.feature-card:nth-child(6) { transition-delay: 0.5s; }
+
+/* --- Theme Showcase Section --- */
+.theme-showcase {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: clamp(12px, 2vw, 20px);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.theme-swatch {
+    width: clamp(80px, 12vw, 100px);
+    border-radius: var(--meme-radius);
+    border: var(--meme-border-width) solid var(--meme-border);
+    box-shadow: var(--meme-shadow-x) var(--meme-shadow-y) 0 var(--meme-shadow);
+    overflow: hidden;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    cursor: default;
+}
+
+.theme-swatch:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 3px 3px 0 var(--meme-shadow);
+}
+
+.swatch-preview {
+    height: clamp(50px, 8vw, 65px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.swatch-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+.swatch-label {
+    padding: 6px 0;
+    text-align: center;
+    font-size: clamp(0.65rem, 0.6rem + 0.15vw, 0.75rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    border-top: var(--meme-border-width) solid var(--meme-border);
+    color: var(--meme-card-text);
+    background: var(--meme-card-bg);
+}
+
+/* Individual theme colors */
+.theme-lavender .swatch-preview { background: #E0D4FA; }
+.theme-lavender .swatch-dot { background: #7C3AED; }
+.theme-mint .swatch-preview { background: #D1F5DE; }
+.theme-mint .swatch-dot { background: #059669; }
+.theme-cream .swatch-preview { background: #FDF5E3; }
+.theme-cream .swatch-dot { background: #D4A017; }
+.theme-sky .swatch-preview { background: #D1E8FF; }
+.theme-sky .swatch-dot { background: #2563EB; }
+.theme-rose .swatch-preview { background: #FAD6E3; }
+.theme-rose .swatch-dot { background: #DB2777; }
+.theme-white .swatch-preview { background: #F5F5F5; }
+.theme-white .swatch-dot { background: #2563EB; }
+
+/* --- How It Works Section --- */
+.workflow-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+    gap: clamp(20px, 3vw, 30px);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.workflow-step {
+    text-align: center;
+    position: relative;
+}
+
+.step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(48px, 6vw, 56px);
+    height: clamp(48px, 6vw, 56px);
+    border-radius: var(--meme-radius);
+    background: var(--meme-accent);
+    color: var(--meme-text);
+    font-size: clamp(1.2rem, 1rem + 0.5vw, 1.5rem);
+    font-weight: 900;
+    margin-bottom: clamp(12px, 2vw, 18px);
+    border: var(--meme-border-width) solid var(--meme-border);
+    box-shadow: var(--meme-shadow-x) var(--meme-shadow-y) 0 var(--meme-shadow);
+}
+
+.workflow-step h3 {
+    font-size: clamp(1rem, 0.9rem + 0.3vw, 1.15rem);
+    color: var(--meme-text);
+    margin-bottom: 8px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.workflow-step p {
+    font-size: var(--font-size-sm);
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.6;
+}
+
+.step-arrow {
+    display: none;
+}
+
+@media (min-width: 769px) {
+    .step-arrow {
+        display: block;
+        position: absolute;
+        right: -20px;
+        top: 30px;
+        color: var(--meme-accent);
+        font-size: 1.5rem;
+        font-weight: 900;
+        opacity: 0.6;
+    }
+}
+
+/* --- Pricing Section --- */
+.pricing-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: clamp(20px, 3vw, 30px);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.pricing-card {
+    background: var(--meme-card-bg);
+    border-radius: var(--meme-radius);
+    padding: clamp(22px, 3vw, 35px) clamp(18px, 2.5vw, 30px);
+    text-align: center;
+    border: var(--meme-border-width) solid var(--meme-border);
+    box-shadow: var(--meme-shadow-x) var(--meme-shadow-y) 0 var(--meme-shadow);
+    position: relative;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.pricing-card:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 3px 3px 0 var(--meme-shadow);
+}
+
+.pricing-card h3 {
+    font-size: clamp(1.1rem, 0.95rem + 0.3vw, 1.3rem);
+    color: var(--meme-card-text);
+    margin-bottom: 8px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.pricing-price {
+    font-size: clamp(1.8rem, 1.4rem + 0.8vw, 2.2rem);
+    font-weight: 900;
+    color: var(--meme-accent);
+    margin-bottom: clamp(4px, 1vw, 8px);
+}
+
+.pricing-price span {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.pricing-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.pricing-features li {
+    padding: clamp(6px, 1vw, 8px) 0;
+    border-bottom: 2px solid rgba(232, 232, 232, 0.15);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pricing-features li:last-child {
+    border-bottom: none;
+}
+
+.pricing-features li::before {
+    content: '✓';
+    width: 18px;
+    height: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--meme-accent);
+    color: white;
+    border-radius: var(--meme-radius);
+    flex-shrink: 0;
+    font-size: 0.7rem;
+    font-weight: 900;
+    border: 2px solid var(--meme-border);
+}
+
+.pricing-features li.disabled::before {
+    background: rgba(255, 255, 255, 0.1);
+    content: '—';
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.pricing-features li.disabled {
+    color: rgba(255, 255, 255, 0.35);
+}
+
+/* --- Pro Card (featured) --- */
+.pricing-card.pro-card {
+    border-color: var(--meme-accent);
+    box-shadow: var(--meme-shadow-x) var(--meme-shadow-y) 0 var(--meme-accent);
+}
+
+.pricing-card.pro-card:hover {
+    box-shadow: 3px 3px 0 var(--meme-accent);
+}
+
+/* --- Billing Toggle --- */
+.billing-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(8px, 1.5vw, 12px);
+    margin-bottom: clamp(12px, 2vw, 18px);
+}
+
+.billing-label {
+    font-size: var(--font-size-sm);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: rgba(255, 255, 255, 0.45);
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.billing-label.active {
+    color: var(--meme-card-text);
+}
+
+.toggle-track {
+    width: 44px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: var(--meme-radius-pill);
+    border: 2px solid var(--meme-border);
+    position: relative;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.toggle-thumb {
+    width: 16px;
+    height: 16px;
+    background: var(--meme-accent);
+    border-radius: 3px;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.2s ease;
+    pointer-events: none;
+}
+
+.billing-label {
+    cursor: pointer;
+}
+
+.savings-badge {
+    pointer-events: none;
+}
+
+.toggle-track.annual .toggle-thumb {
+    transform: translateX(20px);
+}
+
+/* --- Savings Badge --- */
+.savings-badge {
+    display: inline-block;
+    background: var(--meme-accent);
+    color: white;
+    padding: 2px 10px;
+    border-radius: var(--meme-radius-pill);
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 2px solid var(--meme-border);
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
+.trial-note {
+    font-size: var(--font-size-sm);
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 600;
+    margin-bottom: clamp(12px, 2vw, 18px);
+}
+
+/* --- Lifetime Card --- */
+.lifetime-card {
+    max-width: 800px;
+    margin: clamp(15px, 2.5vw, 25px) auto 0;
+    background: var(--meme-card-bg);
+    border-radius: var(--meme-radius);
+    padding: clamp(18px, 2.5vw, 28px) clamp(20px, 3vw, 35px);
+    border: var(--meme-border-width) solid var(--meme-border);
+    box-shadow: var(--meme-shadow-x) var(--meme-shadow-y) 0 var(--meme-shadow);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: clamp(10px, 2vw, 20px);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.lifetime-card:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 3px 3px 0 var(--meme-shadow);
+}
+
+.lifetime-info h3 {
+    font-size: clamp(1rem, 0.9rem + 0.3vw, 1.15rem);
+    color: var(--meme-card-text);
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.lifetime-info p {
+    font-size: var(--font-size-sm);
+    color: rgba(255, 255, 255, 0.55);
+    font-weight: 600;
+}
+
+.lifetime-price {
+    font-size: clamp(1.4rem, 1.1rem + 0.6vw, 1.8rem);
+    font-weight: 900;
+    color: var(--meme-accent);
+    white-space: nowrap;
+}
+
+.lifetime-price span {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+@media (max-width: 480px) {
+    .lifetime-card {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* --- Final CTA Section --- */
+.final-cta {
+    text-align: center;
+    padding: clamp(60px, 8vw, 100px) clamp(15px, 4vw, 20px) clamp(80px, 10vw, 120px);
+}
+
+.final-tagline {
+    font-size: clamp(1.3rem, 1rem + 1vw, 2rem);
+    font-weight: 900;
+    color: var(--meme-text);
+    margin-bottom: clamp(25px, 4vw, 40px);
+    text-transform: uppercase;
+}
+
+.final-badges {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: clamp(15px, 3vw, 25px);
+}
+
+.final-badges .store-badge {
+    height: clamp(42px, 6vw, 55px);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .meme-ticker {
+        gap: 5px;
+    }
+
+    .format-tag {
+        font-size: 0.65rem;
+        padding: 3px 8px;
+    }
+
+    .theme-swatch {
+        width: clamp(65px, 14vw, 80px);
+    }
+
+    .hero-tagline .text-shadow-deep {
+        top: 4px;
+        left: 4px;
+    }
+
+    .hero-tagline .text-shadow-mid {
+        top: 2px;
+        left: 2px;
+    }
+}
