@@ -100,6 +100,8 @@ body.blog-page #footer footer {
 }
 
 .blog-hero-badges {
+    display: flex;
+    justify-content: center;
     margin-bottom: var(--space-2xl);
 }
 
