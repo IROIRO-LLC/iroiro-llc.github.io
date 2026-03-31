@@ -83,6 +83,78 @@ body.blog-page #footer footer {
     margin-bottom: var(--space-2xl);
 }
 
+/* --- Blog Hero Showcase (launch posts) --- */
+.blog-hero-showcase {
+    text-align: center;
+    margin-bottom: var(--space-3xl);
+    padding: var(--space-2xl) 0;
+}
+
+.blog-hero-app-icon {
+    display: block;
+    width: 100px;
+    height: 100px;
+    border-radius: 22px;
+    margin: 0 auto var(--space-lg);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+}
+
+.blog-hero-badges {
+    margin-bottom: var(--space-2xl);
+}
+
+.blog-hero-badges a img {
+    height: 44px;
+    width: auto;
+    transition: transform 0.2s ease;
+}
+
+.blog-hero-badges a:hover img {
+    transform: scale(1.05);
+}
+
+.blog-screenshot-carousel {
+    display: flex;
+    gap: var(--space-md);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: var(--space-sm) 0;
+    margin: 0 calc(-1 * var(--space-lg));
+    padding-left: var(--space-lg);
+    padding-right: var(--space-lg);
+}
+
+.blog-screenshot-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.blog-screenshot {
+    flex: 0 0 auto;
+    width: 200px;
+    height: auto;
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    scroll-snap-align: center;
+    transition: transform 0.2s ease;
+}
+
+.blog-screenshot:hover {
+    transform: scale(1.03);
+}
+
+@media (max-width: 768px) {
+    .blog-hero-app-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 18px;
+    }
+
+    .blog-screenshot {
+        width: 160px;
+    }
+}
+
 /* --- Blog Body Content --- */
 .blog-body h2 {
     font-size: clamp(1.3rem, 1.1rem + 0.5vw, 1.7rem);
