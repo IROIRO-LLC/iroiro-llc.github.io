@@ -11,7 +11,7 @@ let returnForce = 0.02; // How strongly particles return to origin
 let driftSpeed = 0.1; // How fast particles naturally drift
 let maxSpeed = 1.5; // Max speed of particle movement
 // --- New Time Controls ---
-let startupDelay = 5; // Seconds before drift begins
+let startupDelay = 1.5; // Seconds before drift begins
 let startTime; // Will hold the timestamp when particles are initialized
 // --- End Controls ---
 
@@ -131,6 +131,16 @@ function initializeParticles() {
     }
     console.log(`Created ${particles.length} particles.`);
     img.updatePixels(); // Good practice, though maybe not strictly needed here
+
+    // Fade in the canvas and hide the static fallback
+    setTimeout(() => {
+        const canvasEl = document.getElementById('defaultCanvas0');
+        if (canvasEl) canvasEl.classList.add('canvas-ready');
+        setTimeout(() => {
+            const fallback = document.getElementById('bg-fallback');
+            if (fallback) fallback.classList.add('hidden');
+        }, 1500);
+    }, 100);
 
     // Make the initializeParticles function globally available for the navDots.js script
     window.initializeParticles = initializeParticles;

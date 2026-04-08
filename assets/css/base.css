@@ -483,7 +483,38 @@ strong {
     transform: translateY(0);
 }
 
+/* --- Background Fallback (shown while p5.js canvas loads) --- */
+#bg-fallback {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background-color: #000000;
+    background-image: url('/assets/images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: opacity 0.8s ease-out;
+}
+
+#bg-fallback.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    #bg-fallback {
+        background-image: url('/assets/images/background_mobile.png');
+    }
+}
+
 /* --- p5.js Canvas (used on most pages) --- */
+@keyframes canvas-fallback-reveal {
+    to { opacity: 1; }
+}
+
 #defaultCanvas0 {
     position: fixed;
     top: 0;
@@ -491,6 +522,14 @@ strong {
     width: 100%;
     height: 100%;
     z-index: -1;
+    opacity: 0;
+    transition: opacity 1.2s ease-in;
+    animation: canvas-fallback-reveal 0s 4s forwards;
+}
+
+#defaultCanvas0.canvas-ready {
+    animation: none;
+    opacity: 1;
 }
 
 /* --- Global Responsive --- */

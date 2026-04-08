@@ -9,11 +9,14 @@
     <link rel="stylesheet" href="/assets/css/base.css">
     <link rel="stylesheet" href="/assets/css/content-pages.css">
     <link rel="icon" href="/assets/images/logo.png" type="image/png">
+    <link rel="preload" as="image" href="/assets/images/background.jpg" media="(min-width: 769px)">
+    <link rel="preload" as="image" href="/assets/images/background_mobile.png" media="(max-width: 768px)">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+<div id="bg-fallback"></div>
 
 <!-- Overlay Header Elements - Floats above the p5 sketch -->
 <header class="overlay-header">
