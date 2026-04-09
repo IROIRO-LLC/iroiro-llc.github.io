@@ -11,7 +11,7 @@ let returnForce = 0.02; // How strongly particles return to origin
 let driftSpeed = 0.1; // How fast particles naturally drift
 let maxSpeed = 1.5; // Max speed of particle movement
 // --- New Time Controls ---
-let startupDelay = 1.5; // Seconds before drift begins
+let startupDelay = 5; // Seconds before drift begins
 let startTime; // Will hold the timestamp when particles are initialized
 // --- End Controls ---
 
