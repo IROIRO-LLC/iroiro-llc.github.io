@@ -13,6 +13,21 @@
             }
         })();
     </script>
+    <!-- Prevent iOS Safari's position:fixed rendering bug when the page is
+         loaded with a non-zero scroll offset (causes the nav bar to float
+         mid-page until the user scrolls). -->
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.addEventListener('load', function() {
+            if (window.scrollY > 0) {
+                var x = window.scrollX, y = window.scrollY;
+                window.scrollTo(x, y - 1);
+                window.scrollTo(x, y);
+            }
+        });
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="IROIRO - Beautiful everyday life solutions. Experience our dynamic and interactive world.">
     <meta name="theme-color" content="#000000">
