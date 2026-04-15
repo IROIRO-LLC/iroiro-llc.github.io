@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize all components
     initTypewriterEffect();
     initStyleTabs();
-    initFeedbackForm();
     initMultiSectionNav();
 });
 
@@ -146,77 +145,6 @@ function initStyleTabs() {
     });
 }
 
-// Feedback Form Functionality
-function initFeedbackForm() {
-    const form = document.getElementById('feedback-form');
-    if (!form) return;
-
-    const submitBtn = form.querySelector('.submit-btn');
-    const messageDiv = form.querySelector('.form-message');
-
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        // Get form data
-        const formData = {
-            type: form.querySelector('#feedback-type').value,
-            subject: form.querySelector('#feedback-subject').value,
-            description: form.querySelector('#feedback-description').value,
-            email: form.querySelector('#feedback-email').value
-        };
-
-        // Validate
-        if (!formData.type || !formData.subject || !formData.description) {
-            showMessage('Please fill in all required fields.', 'error');
-            return;
-        }
-
-        // Disable button and show loading
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
-
-        try {
-            const response = await fetch('https://kigo-feedback.iroiro.workers.dev', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    type: formData.type,
-                    title: formData.subject,
-                    body: `${formData.description}\n\n---\nSource: 17on Landing Page\nEmail: ${formData.email || 'Not provided'}`
-                })
-            });
-
-            if (response.ok) {
-                showMessage('Thank you for your feedback! We\'ll review it soon.', 'success');
-                form.reset();
-            } else {
-                throw new Error('Server responded with an error');
-            }
-        } catch (error) {
-            console.error('Feedback submission error:', error);
-            showMessage('Something went wrong. Please try again later.', 'error');
-        } finally {
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Send Feedback';
-        }
-    });
-
-    function showMessage(text, type) {
-        messageDiv.textContent = text;
-        messageDiv.className = 'form-message ' + type;
-
-        // Auto-hide success message after 5 seconds
-        if (type === 'success') {
-            setTimeout(() => {
-                messageDiv.className = 'form-message';
-                messageDiv.style.display = 'none';
-            }, 5000);
-        }
-    }
-}
-
 // Extended Intersection Observer for staggered animations
 const observerOptions = {
     root: null,
@@ -258,8 +186,7 @@ function initMultiSectionNav() {
         { id: 'features', element: document.getElementById('features') },
         { id: 'styles', element: document.getElementById('styles') },
         { id: 'collectibles', element: document.getElementById('collectibles') },
-        { id: 'pricing', element: document.getElementById('pricing') },
-        { id: 'feedback', element: document.getElementById('feedback') }
+        { id: 'pricing', element: document.getElementById('pricing') }
     ];
 
     // Override click handlers for all dots
