@@ -48,7 +48,11 @@ body.landing-page main {
 .hero-content {
     max-width: min(820px, 92%);
     margin: 0 auto;
-    padding: 0 clamp(15px, 4vw, 20px);
+    padding: clamp(36px, 5vw, 56px) clamp(28px, 5vw, 56px);
+    border-radius: clamp(28px, 3.6vw, 40px);
+    background: rgba(0, 0, 0, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .app-icon-large {
