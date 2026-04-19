@@ -120,7 +120,11 @@ strong {
     z-index: 2;
 }
 
-/* --- Overlay Header --- */
+/* --- Overlay Header ---
+   No backdrop-filter here: on iOS Safari, `position: fixed` + `backdrop-filter`
+   desyncs from the scroll compositor during momentum scroll and leaves a ghost
+   of the header mid-page. A gradient gives us legibility without the GPU
+   sampling cost, and translate3d keeps the header on its own layer. */
 .overlay-header {
     position: fixed;
     top: 0;
@@ -128,9 +132,15 @@ strong {
     width: 100%;
     padding: clamp(10px, 2vw, 15px) 0;
     z-index: 10;
-    background: rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px);
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.75) 0%,
+        rgba(0, 0, 0, 0.55) 60%,
+        rgba(0, 0, 0, 0) 100%
+    );
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    will-change: transform;
 }
 
 .overlay-header .container {
@@ -497,6 +507,8 @@ strong {
     background-position: center;
     background-repeat: no-repeat;
     transition: opacity 0.8s ease-out;
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
 }
 
 #bg-fallback.hidden {
@@ -525,6 +537,8 @@ strong {
     opacity: 0;
     transition: opacity 1.2s ease-in;
     animation: canvas-fallback-reveal 0s 4s forwards;
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
 }
 
 #defaultCanvas0.canvas-ready {
