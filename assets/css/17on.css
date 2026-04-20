@@ -258,9 +258,15 @@ body.landing-page main {
     transition: all 0.3s ease;
 }
 
-.style-tab:hover {
+.style-tab:hover:not(:disabled) {
     border-color: rgba(255, 255, 255, 0.6);
     color: var(--17on-text);
+}
+
+.style-tab:disabled {
+    cursor: default;
+    opacity: 0.6;
+    font-style: italic;
 }
 
 .style-tab.active {
@@ -408,6 +414,14 @@ body.landing-page main {
     color: var(--17on-purple);
 }
 
+.stat-badge {
+    display: block;
+    font-size: clamp(1.5rem, 1.2rem + 0.8vw, 2rem);
+    font-weight: 700;
+    color: var(--17on-purple);
+    line-height: 1;
+}
+
 .stat-label {
     font-size: 0.85rem;
     color: #777;
@@ -495,17 +509,6 @@ body.landing-page main {
     border-bottom: none;
 }
 
-.coming-soon {
-    font-size: 0.7rem;
-    background: var(--17on-purple);
-    color: #fff;
-    padding: 2px 8px;
-    border-radius: var(--border-radius-sm);
-    margin-left: 8px;
-    font-weight: 600;
-    text-transform: uppercase;
-    white-space: nowrap;
-}
 
 .pricing-features li::before {
     content: '';
