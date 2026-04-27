@@ -1,6 +1,6 @@
 # KLIPY Start
 inventorypartnerdomain=klipy.com
-klipy.com, 7115583, DIRECT
+klipy.com, 4538436951, DIRECT
 admixer.net, 191fda99-2fb4-452b-a444-db82b2817832, RESELLER
 inmobi.com, 61d733c3779d43e590c51c8bc078e10c, RESELLER, 83e75a7ae333ca9d
 pubmatic.com, 167254, RESELLER, 5d62403b186f2ace
