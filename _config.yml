@@ -1,0 +1,5 @@
+# Jekyll skips files and directories starting with "." by default,
+# which would prevent /.well-known/ from being served on GitHub Pages.
+# Explicitly include it so /.well-known/security.txt is published.
+include:
+  - .well-known

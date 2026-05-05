@@ -1,0 +1,21 @@
+# Security policy for IROIRO LLC (iroiro.us)
+#
+# If you believe you have found a security vulnerability affecting
+# iroiro.us, any of our subdomains, or software we publish under
+# "IROIRO LLC" (iOS and Android apps), we would be grateful if you
+# reported it to us privately at the contact below.
+#
+# Please include:
+#   - A clear description of the issue and its impact
+#   - Steps to reproduce, or a proof of concept
+#   - The affected URL, app, version, or platform
+#
+# We aim to acknowledge reports within a few business days. Please
+# give us a reasonable amount of time to investigate and remediate
+# before any public disclosure. Thank you for helping keep the
+# people who use our software safe.
+
+Contact: mailto:contact@iroiro.us
+Expires: 2026-12-31T23:59:00.000Z
+Preferred-Languages: en
+Canonical: https://iroiro.us/.well-known/security.txt
