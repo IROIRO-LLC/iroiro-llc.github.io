@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="IROIRO Security Policy - How to responsibly report a security vulnerability in our websites, services, or mobile applications.">
+    <meta name="theme-color" content="#000000">
+    <title>Security Policy - IROIRO | 色々</title>
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/content-pages.css">
+    <link rel="icon" href="/assets/images/logo.png" type="image/png">
+    <link rel="preload" as="image" href="/assets/images/background.jpg" media="(min-width: 769px)">
+    <link rel="preload" as="image" href="/assets/images/background_mobile.png" media="(max-width: 768px)">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="bg-fallback"></div>
+
+<!-- Overlay Header Elements - Floats above the p5 sketch -->
+<header class="overlay-header">
+    <div class="container">
+        <div class="main-title">
+            <img src="/assets/images/logo.png" alt="IROIRO small logo" class="title-logo">
+            IROIRO <span class="jp-chars">色々</span>
+        </div>
+        <nav class="overlay-nav">
+            <a href="/index.html" class="nav-button">Home</a>
+            <a href="/blog/index.html" class="nav-button">Blog</a>
+            <a href="/pages/contact.html" class="nav-button">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<!-- Main content starts HERE - directly over p5.js background -->
+<main>
+    <!-- Security Policy Section - simplified structure -->
+    <section class="content-section translucent-overlay">
+        <div class="content-container">
+            <h1>Security Policy</h1>
+            <p class="effective-date">Effective date: May 5, 2026</p>
+
+            <p>IROIRO LLC ("us", "we", or "our") takes the security of the people who use our software seriously. This page explains how to responsibly report a vulnerability, what is in scope, and what you can expect from us in return.</p>
+
+            <h2>Reporting a Vulnerability</h2>
+            <p>If you believe you have discovered a security vulnerability affecting our websites, services, or mobile applications, please email us at <a href="mailto:contact@iroiro.us">contact@iroiro.us</a>. To help us reproduce and triage your report quickly, please include:</p>
+            <ul>
+                <li>A clear description of the issue and the impact you believe it has</li>
+                <li>Steps to reproduce, or a working proof of concept</li>
+                <li>The affected URL, application name, version, and platform (where applicable)</li>
+                <li>Any logs, screenshots, or supporting material that would help us understand the issue</li>
+            </ul>
+            <p>Please do not include personal data belonging to other users, and please do not test against accounts or data that are not your own.</p>
+
+            <h2>What to Expect From Us</h2>
+            <p>We read every report, but as a small studio we cannot commit to a response or to a specific remediation timeline. We may reach out for clarification or to thank you — but please do not take a lack of reply to mean your report was not seen, read, or appreciated. It very likely was.</p>
+            <ul>
+                <li>We ask that you give us a reasonable amount of time to investigate and remediate before any public disclosure, and that you work with us in good faith.</li>
+                <li>We are happy to credit reporters in any public write-up. If you would prefer to remain anonymous, just let us know.</li>
+            </ul>
+
+            <h2>Scope</h2>
+            <p>The following are in scope for this policy:</p>
+            <ul>
+                <li>The <a href="https://iroiro.us">iroiro.us</a> website and its subdomains</li>
+                <li>Cloudflare Workers operated by IROIRO LLC under iroiro.us</li>
+                <li>Mobile applications published under "IROIRO LLC" on the Apple App Store and Google Play</li>
+            </ul>
+
+            <h2>Out of Scope</h2>
+            <p>The following are generally out of scope, and we ask that you do not test for them:</p>
+            <ul>
+                <li>Denial-of-service attacks, traffic flooding, or any test that could degrade availability for other users</li>
+                <li>Social engineering of our staff, contractors, or users</li>
+                <li>Physical attacks against IROIRO LLC property or personnel</li>
+                <li>Vulnerabilities in third-party services we depend on (e.g. Cloudflare, GitHub Pages, Apple, Google, Firebase) — please report those directly to the relevant vendor</li>
+                <li>Reports based solely on automated scanner output, without a demonstrated impact</li>
+                <li>Missing best-practice security headers, cookie flags, or TLS configuration, without a working exploit</li>
+                <li>Software version disclosure without an associated, exploitable issue</li>
+                <li>Issues that require a rooted, jailbroken, or otherwise compromised device, or that require physical access to an unlocked device</li>
+                <li>Self-XSS and issues that require the victim to paste attacker-supplied content into developer tools</li>
+                <li>Spam, content, or moderation concerns (please use our regular contact form for those)</li>
+            </ul>
+
+            <h2>Safe Harbor</h2>
+            <p>We consider security research conducted in good faith and in accordance with this policy to be authorized. We will not pursue legal action against, nor ask law enforcement to investigate, researchers who:</p>
+            <ul>
+                <li>Make a good-faith effort to comply with this policy</li>
+                <li>Avoid privacy violations, destruction of data, and degradation of our services</li>
+                <li>Only interact with their own accounts, or accounts they have explicit permission to access</li>
+                <li>Do not exploit a finding beyond the minimum necessary to confirm it</li>
+                <li>Give us a reasonable opportunity to remediate before disclosing publicly</li>
+            </ul>
+            <p>If you are unsure whether a specific test would fall within this policy, please contact us first.</p>
+
+            <h2>Bounties</h2>
+            <p>We are a small studio and do not currently operate a paid bug bounty program. We genuinely appreciate every responsible disclosure, and are happy to credit you publicly with your permission.</p>
+
+            <h2>Contact</h2>
+            <p>Security reports: <a href="mailto:contact@iroiro.us">contact@iroiro.us</a></p>
+            <p>General questions: <a href="https://iroiro.us/pages/contact.html">https://iroiro.us/pages/contact.html</a></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+</main>
+
+<!-- Load p5.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+
+<!-- Load Custom Scripts -->
+<script src="/assets/js/iroiro-sketch.js"></script>
+<script src="/assets/js/observeSections.js"></script>
+<script src="/assets/js/loadHeaderAndFooter.js"></script>
+
+</body>
+</html>
