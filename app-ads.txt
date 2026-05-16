@@ -1,3 +1,6 @@
+# Google AdMob
+google.com, pub-1783941673126759, DIRECT, f08c47fec0942fa0
+
 # KLIPY Start
 inventorypartnerdomain=klipy.com
 klipy.com, 4538436951, DIRECT
