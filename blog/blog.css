@@ -102,11 +102,15 @@ body.blog-page #footer footer {
 .blog-hero-badges {
     display: flex;
     justify-content: center;
+    align-items: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
     margin-bottom: var(--space-2xl);
 }
 
+/* Store badges match the home page exactly: local PNG assets, height clamp(32-40px), width auto. */
 .blog-hero-badges a img {
-    height: 44px;
+    height: clamp(32px, 5vw, 40px);
     width: auto;
     transition: transform 0.2s ease;
 }
@@ -305,8 +309,9 @@ body.blog-page #footer footer {
     flex-wrap: wrap;
 }
 
+/* Store badges match the home page exactly: local PNG assets, height clamp(32-40px), width auto. */
 .blog-cta .store-badges a img {
-    height: 40px;
+    height: clamp(32px, 5vw, 40px);
     width: auto;
     transition: transform 0.2s ease;
 }
