@@ -217,6 +217,20 @@ body.blog-page #footer footer {
     color: var(--color-text);
 }
 
+/* --- Quick Answer callout (GEO above-the-fold direct answer) --- */
+.blog-body .quick-answer {
+    background: rgba(66, 227, 245, 0.08);
+    border: 1px solid rgba(66, 227, 245, 0.25);
+    border-left: 3px solid var(--color-primary);
+    border-radius: var(--border-radius-md);
+    padding: var(--space-lg) var(--space-xl);
+    margin-bottom: var(--space-2xl);
+}
+
+.blog-body .quick-answer p {
+    margin-bottom: 0;
+}
+
 /* --- Divider --- */
 .blog-body hr {
     border: none;
